@@ -7,10 +7,10 @@ function photographerFactory(data) {
 
         // ARTICLE HAUT + <a></a>
         const link = document.createElement('a');
-        link.href = id;
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
         const h2 = document.createElement( 'h2' );
+        link.href = `./photographer.html?${id}`;
+        img.src = picture;
         h2.textContent = name;
         link.appendChild(img);
         link.appendChild(h2);
@@ -29,5 +29,24 @@ function photographerFactory(data) {
         return (article);
     }
 
-    return { name, picture, getUserCardDOM };
+    function setPhotographerPage() {
+        const header = document.querySelector('.photograph-header');
+
+        const h1 = document.createElement('h1');
+        const address = document.createElement('address');
+        const blockquote = document.createElement('blockquote');
+        const img = document.createElement('img');
+
+        h1.innerText = name;
+        address.innerText = `${city}, ${country}`;
+        blockquote.innerText = `${tagline}`;
+        img.src = picture;
+
+        header.insertBefore(blockquote, header.firstElementChild);
+        header.insertBefore(address, header.firstElementChild);
+        header.insertBefore(h1, header.firstElementChild);
+        header.appendChild(img);
+    }
+
+    return { getUserCardDOM, setPhotographerPage };
 }
