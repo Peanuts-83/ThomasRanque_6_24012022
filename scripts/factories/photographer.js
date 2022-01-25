@@ -1,6 +1,6 @@
-function photographerFactory(data) {
+function photographerFactory(data, profile) {
     const { name, id, city, country, tagline, price, portrait } = data;
-    const picture = `assets/photographers/${portrait}`;
+    const picture = `assets/photos/${name.split(' ')[0]}/${profile.image}`;
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
@@ -18,7 +18,7 @@ function photographerFactory(data) {
         // CLONE divImg
         const shadow = divImg.cloneNode(true);
         shadow.className = 'shadow';
-        
+
         h1.textContent = name;
         link.appendChild(divImg);
         link.appendChild(h1);

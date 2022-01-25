@@ -6,11 +6,20 @@
         return photographers;
     }
 
-    async function displayData(photographers) {
+    function getProfiles() {
+        const profiles = fetch('./data/profiles.json')
+                            .then(data => data.json())
+                            .then (data => data.profiles)
+                            .catch(err => console.log('Error parsing profiles:', err));
+        return profiles;
+    }
+
+    async function displayData(photographers, profiles) {
         const photographersSection = document.querySelector(".photographer_section");
 
         photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
+            const [ profile ] = profiles.filter(profile => profile.photographerId == photographer.id);
+            const photographerModel = photographerFactory(photographer, profile);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
         });
@@ -19,7 +28,9 @@
     async function init() {
         // Récupère les datas des photographes
         const photographers = await getPhotographers();
-        displayData(photographers);
+        const profiles = await getProfiles();
+        console.log(profiles)
+        displayData(photographers, profiles);
     };
 
     init();
