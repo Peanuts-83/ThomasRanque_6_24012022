@@ -5,15 +5,17 @@ function photosFactory(name, data) {
 
   function getPhotoCardDOM() {
     const article = document.createElement('article');
-    const img = document.createElement('img');
+    const divImg = document.createElement('div');
     const h3 = document.createElement('h3');
     const rating = document.createElement('span');
 
-    img.src = picture;
+    divImg.style.background = `#fff url(${picture}) no-repeat`;
+    divImg.style['background-size'] = 'cover';
+    divImg.className = 'photo';
     h3.innerText = title;
     rating.innerHTML = `${likes} <i class="fas fa-heart"></i>`;
 
-    article.appendChild(img);
+    article.appendChild(divImg);
     article.appendChild(h3);
     article.appendChild(rating);
     return article;

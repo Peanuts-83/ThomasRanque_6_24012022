@@ -1,18 +1,54 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /*border: 1px dashed red;*/
+}
+
 #contact_modal {
   display: none;
 }
 
+/* PHOTOGRAPH HEADER */
 .photograph-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   background-color: #FAFAFA;
   height: 300px;
   margin: 0 100px;
 }
 
-.contact_button {
+.photograph-header .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.photograph-header .contact_button {
   font-size: 20px;
   font-weight: bold;
   color: white;
   padding: 11px;
+  margin: 100px 0;
   width: 170px;
   height: 70px;
   border: none;
@@ -21,10 +57,52 @@
   cursor: pointer;
 }
 
-.header-photo {
-  width: 150px;
+.photograph-header .profile {
+  position: relative;
 }
 
+.photograph-header .photo-profile {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  -webkit-mask: url("#svgmask");
+          mask: url("#svgmask");
+}
+
+.photograph-header .shadow {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
+          mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
+  -webkit-transform: scaleX(95%);
+          transform: scaleX(95%);
+  position: absolute;
+  top: 0;
+}
+
+/* SECTION PORTFOLIO */
+.portfolio {
+  margin: 50px 100px;
+}
+
+.portfolio-imgs {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin: 50px 0;
+}
+
+.portfolio-imgs article .photo {
+  width: 400px;
+  height: 400px;
+  border-radius: 5px;
+}
+
+/* MODAL CONTACT */
 .modal {
   border-radius: 5px;
   background-color: #DB8876;

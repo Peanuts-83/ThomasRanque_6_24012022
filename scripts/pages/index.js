@@ -1,36 +1,38 @@
-    function getPhotographers() {
-        const photographers = fetch('./data/photographers.json')
-                                .then(data => data.json())
-                                .then(data => data.photographers)
-                                .catch(err => console.log('Error parsing photographers:', err));
-        return photographers;
-    }
-
-    function getProfiles() {
-        const profiles = fetch('./data/profiles.json')
+// PARSE JSON
+function getPhotographers() {
+    const photographers = fetch('./data/photographers.json')
                             .then(data => data.json())
-                            .then (data => data.profiles)
-                            .catch(err => console.log('Error parsing profiles:', err));
-        return profiles;
-    }
+                            .then(data => data.photographers)
+                            .catch(err => console.log('Error parsing photographers:', err));
+    return photographers;
+}
 
-    async function displayData(photographers, profiles) {
-        const photographersSection = document.querySelector(".photographer_section");
+function getProfiles() {
+    const profiles = fetch('./data/profiles.json')
+                        .then(data => data.json())
+                        .then (data => data.profiles)
+                        .catch(err => console.log('Error parsing profiles:', err));
+    return profiles;
+}
 
-        photographers.forEach((photographer) => {
-            const [ profile ] = profiles.filter(profile => profile.photographerId == photographer.id);
-            const photographerModel = photographerFactory(photographer, profile);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    };
+// DISPLAY DATA
+function displayData(photographers, profiles) {
+    const photographersSection = document.querySelector(".photographer_section");
 
-    async function init() {
-        // Récupère les datas des photographes
-        const photographers = await getPhotographers();
-        const profiles = await getProfiles();
-        console.log(profiles)
-        displayData(photographers, profiles);
-    };
+    photographers.forEach((photographer) => {
+        const [ profile ] = profiles.filter(profile => profile.photographerId == photographer.id);
+        const photographerModel = photographerFactory(photographer, profile);
+        const userCardDOM = photographerModel.getUserCardDOM();
+        photographersSection.appendChild(userCardDOM);
+    });
+};
 
-    init();
+// INIT
+async function init() {
+    // Récupère les datas des photographes
+    const photographers = await getPhotographers();
+    const profiles = await getProfiles();
+    displayData(photographers, profiles);
+};
+
+init();
