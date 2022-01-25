@@ -7,13 +7,23 @@ function photographerFactory(data) {
 
         // ARTICLE HAUT + <a></a>
         const link = document.createElement('a');
+        const divImg = document.createElement('div');
         const img = document.createElement( 'img' );
-        const h2 = document.createElement( 'h2' );
+        const h1 = document.createElement( 'h1' );
         link.href = `./photographer.html?${id}`;
-        img.src = picture;
-        h2.textContent = name;
-        link.appendChild(img);
-        link.appendChild(h2);
+
+        divImg.className = 'photo-profile';
+        divImg.style.background = `#FAFAFA url(${picture}) no-repeat`;
+        divImg.style["background-size"] = 'cover';
+        // CLONE divImg
+        const shadow = divImg.cloneNode(true);
+        shadow.className = 'shadow';
+        
+        h1.textContent = name;
+        link.appendChild(divImg);
+        link.appendChild(h1);
+        // INSERT shadow as divImg::after
+        divImg.after(shadow);
 
         // ARTICLE BAS
         const address = document.createElement('address');

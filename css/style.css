@@ -1,50 +1,132 @@
 @import url("photographer.css");
-
 body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+  --red: #901C1C;
+  --red-hover: #D3573C;
+  --grey: #FAFAFA;
+  --medium-grey: #757575;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
 }
 
+* {
+  /*
+    border: 1px dashed red;*/
+}
+
+a {
+  text-decoration: none;
+}
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 90px;
+  margin: 0 100px;
 }
 
 h1 {
-    color: #901C1C;
-    margin-right: 100px;
+  color: var(--red);
+  font-size: 36px;
+  font-weight: 400;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+  height: 50px;
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin: 100px;
 }
 
 .photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-self: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+.photographer_section article * {
+  text-align: center;
+  margin-bottom: 5px;
 }
 
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
+.photographer_section article a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
 }
+
+.photographer_section article .photo-profile {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  -webkit-mask: url("#svgmask");
+          mask: url("#svgmask");
+}
+
+.photographer_section article .shadow {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  z-index: -1;
+  background-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
+          mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
+  -webkit-transform: scaleX(95%);
+          transform: scaleX(95%);
+  position: absolute;
+  top: 0;
+}
+
+.photographer_section article h1 {
+  color: var(--red-hover);
+}
+
+.photographer_section article address {
+  color: var(--red);
+  font-size: 17px;
+  font-style: normal;
+  margin-bottom: -10px;
+}
+
+.photographer_section article blockquote {
+  font-size: 13px;
+}
+
+.photographer_section article data {
+  color: var(--medium-grey);
+  font-size: 12px;
+}
+/*# sourceMappingURL=style.css.map */
