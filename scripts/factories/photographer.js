@@ -29,7 +29,7 @@ function photographerFactory(data) {
         return (article);
     }
 
-    function setPhotographerPage() {
+    function getPhotographerPage() {
         const header = document.querySelector('.photograph-header');
 
         const h1 = document.createElement('h1');
@@ -41,6 +41,7 @@ function photographerFactory(data) {
         address.innerText = `${city}, ${country}`;
         blockquote.innerText = `${tagline}`;
         img.src = picture;
+        img.className = 'header-photo';
 
         header.insertBefore(blockquote, header.firstElementChild);
         header.insertBefore(address, header.firstElementChild);
@@ -48,5 +49,5 @@ function photographerFactory(data) {
         header.appendChild(img);
     }
 
-    return { getUserCardDOM, setPhotographerPage };
+    return { getUserCardDOM, getPhotographerPage };
 }
