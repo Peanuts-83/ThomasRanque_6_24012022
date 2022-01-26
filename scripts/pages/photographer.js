@@ -41,7 +41,6 @@ function displayPhotos(name, photos) {
     const photoCardDOM = photoModel.getPhotoCardDOM();
     portfolioImgs.appendChild(photoCardDOM);
   })
-
 }
 
 // INIT

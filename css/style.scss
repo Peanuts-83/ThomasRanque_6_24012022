@@ -22,15 +22,16 @@ header {
     align-items: center;
     height: 90px;
     margin: 0 100px;
+    h2 {
+        color: var(--red);
+    }
 }
 
 h1 {
-    color: var(--red);
     font-size: 64px;
     font-weight: 400;
 }
 h2 {
-    color: var(--red);
     font-size: 36px;
     font-weight: 400;
 }
@@ -79,7 +80,7 @@ h2 {
         position: absolute;
         top: 0;
     }
-    h1 {
+    h2 {
         color: var(--red-hover);
     }
     address {

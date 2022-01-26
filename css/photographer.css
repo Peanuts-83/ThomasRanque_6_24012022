@@ -31,6 +31,7 @@
 }
 
 .photograph-header .info {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -38,9 +39,28 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  /*line-height: 10px;*/
+}
+
+.photograph-header .info h1 {
+  color: var(--red-hover);
+  margin: 15px 0;
+}
+
+.photograph-header .info address {
+  font-style: normal;
+  font-size: 31px;
+  color: var(--red);
+  margin: -10px 0;
+}
+
+.photograph-header .info blockquote {
+  font-size: 23px;
+  color: var(--medium-grey);
+  margin-left: 0;
 }
 
 .photograph-header .contact_button {
@@ -87,7 +107,7 @@
   margin: 50px 100px;
 }
 
-.portfolio-imgs {
+.portfolio .portfolio-imgs {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr;
@@ -96,10 +116,46 @@
   margin: 50px 0;
 }
 
-.portfolio-imgs article .photo {
-  width: 400px;
-  height: 400px;
+.portfolio .portfolio-imgs article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  font-size: 18px;
+}
+
+.portfolio .portfolio-imgs article .photo {
+  /* Square responsive imgs */
+  width: 100%;
+  padding-top: 100%;
   border-radius: 5px;
+  margin-bottom: -10px;
+}
+
+.portfolio .portfolio-imgs article h3 {
+  color: var(--red);
+}
+
+.portfolio .portfolio-imgs article .rating {
+  cursor: pointer;
+  padding: 5px;
+  color: var(--red);
+}
+
+.portfolio .portfolio-imgs article .rating:hover {
+  color: var(--red-hover);
+}
+
+.portfolio .portfolio-imgs article .rating:active {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 /* MODAL CONTACT */

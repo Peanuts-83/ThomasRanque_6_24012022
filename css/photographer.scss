@@ -18,9 +18,26 @@
     height: 300px;
     margin: 0 100px;
     .info {
+        height: 100%;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        justify-content: center;
+        /*line-height: 10px;*/
+        h1 {
+            color: var(--red-hover);
+            margin: 15px 0;
+        }
+        address {
+            font-style: normal;
+            font-size: 31px;
+            color: var(--red);
+            margin: -10px 0;
+        }
+        blockquote {
+            font-size: 23px;
+            color: var(--medium-grey);
+            margin-left: 0;
+        }
     }
     .contact_button {
         font-size: 20px;
@@ -61,20 +78,42 @@
 /* SECTION PORTFOLIO */
 .portfolio {
     margin: 50px 100px;
-}
-.portfolio-imgs {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin: 50px 0;
-    article {
-        .photo {
-            width: 400px;
-            height: 400px;
-            border-radius: 5px;
+    .portfolio-imgs {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 70px;
+        margin: 50px 0;
+        article {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 18px;
+            .photo {
+                /* Square responsive imgs */
+                width: 100%;
+                padding-top: 100%;
+                border-radius: 5px;
+                margin-bottom: -10px;
+            }
+            h3 {
+                color: var(--red);
+            }
+            .rating {
+                cursor: pointer;
+                padding: 5px;
+                color: var(--red);
+                    &:hover {
+                        color: var(--red-hover);
+                    }
+                    &:active {
+                        transform: scale(1.2);
+                    }
+            }
         }
     }
 }
+
 
 /* MODAL CONTACT */
 

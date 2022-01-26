@@ -14,12 +14,21 @@ function photosFactory(name, data) {
     divImg.className = 'photo';
     h3.innerText = title;
     rating.innerHTML = `${likes} <i class="fas fa-heart"></i>`;
+    rating.className = 'rating';
+    rating.addEventListener('click', ratingIncrement);
 
     article.appendChild(divImg);
     article.appendChild(h3);
     article.appendChild(rating);
+
     return article;
   }
 
   return { getPhotoCardDOM }
+}
+
+// RATING INCREMENT
+// TODO: ratings memory ? //
+function ratingIncrement() {
+  this.innerHTML = `${+this.innerText + 1} <i class="fas fa-heart"></i>`;
 }

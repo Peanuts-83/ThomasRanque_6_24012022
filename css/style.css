@@ -28,14 +28,16 @@ header {
   margin: 0 100px;
 }
 
-h1 {
+header h2 {
   color: var(--red);
+}
+
+h1 {
   font-size: 64px;
   font-weight: 400;
 }
 
 h2 {
-  color: var(--red);
   font-size: 36px;
   font-weight: 400;
 }
@@ -111,7 +113,7 @@ h2 {
   top: 0;
 }
 
-.photographer_section article h1 {
+.photographer_section article h2 {
   color: var(--red-hover);
 }
 
