@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test video to canvas</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <video src="../assets/photos/Ellie-Rose/Sport_Tricks_in_the_air.mp4" width="400" ></video>
+  <canvas id="canvas" style="width: 400px; height: 250px; background: #ccc"></canvas>
+
+  <script>
+    window.onload = () => {
+      const vid = document.querySelector('video');
+      let canvas = document.querySelector('canvas');
+      canvas.width = vid.videoWidth;
+      canvas.height = vid.videoHeight;
+      vid.currentTime = 3;
+      vid.onseeked = () => {
+        let ctx = canvas.getContext('2d');
+        ctx.drawImage(vid, 0, 0)
+      }
+    }
+
+    canvas.g
+  </script>
+</body>
+</html>

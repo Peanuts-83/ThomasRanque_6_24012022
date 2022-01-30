@@ -1,42 +1,50 @@
+/////////////////////////
+// INITIALISATION PAGE //
+
+// ROOT VARIABLES //
+let photographer, photos, profile;
+
+// DOM elements //
+const portfolioImgs = document.querySelector('.portfolio-imgs');
+const header = document.querySelector('.photograph-header');
+
 // PARSE JSON
 function getPhotographers() {
   const photographers = fetch('./data/photographers.json')
-                          .then(data => data.json())
-                          .then(data => data.photographers)
-                          .catch(err => console.log('Error parsing photographers:', err));
+    .then(data => data.json())
+    .then(data => data.photographers)
+    .catch(err => console.log('Error parsing photographers:', err));
   return photographers;
 }
 
 function getProfiles() {
-    const profiles = fetch('./data/profiles.json')
-                        .then(data => data.json())
-                        .then (data => data.profiles)
-                        .catch(err => console.log('Error parsing profiles:', err));
-    return profiles;
+  const profiles = fetch('./data/profiles.json')
+    .then(data => data.json())
+    .then(data => data.profiles)
+    .catch(err => console.log('Error parsing profiles:', err));
+  return profiles;
 }
 
 function getPhotos() {
   const photos = fetch('./data/photographers.json')
-                  .then(data => data.json())
-                  .then(data => data.media)
-                  .catch(err => console.log('Error parsing photos', err));
+    .then(data => data.json())
+    .then(data => data.media)
+    .catch(err => console.log('Error parsing photos', err));
   return photos;
 }
 
 // DISPLAY DATAS
 // photograph-header
 function displayData(photographer, profile) {
-  const header = document.querySelector('.photograph-header');
   const photographerModel = photographerFactory(photographer, profile);
-  const [ headerText, headerImg ] = photographerModel.getPhotographerPage();
+  const [headerText, headerImg] = photographerModel.getPhotographerPage();
   header.insertBefore(headerText, header.firstElementChild);
   header.append(headerImg);
 }
 
 // portfolio photos
 function displayPhotos(name, photos) {
-  const portfolioImgs = document.querySelector('.portfolio-imgs');
-  photos.forEach (photo => {
+  photos.forEach(photo => {
     const photoModel = photosFactory(name, photo);
     const photoCardDOM = photoModel.getPhotoCardDOM();
     portfolioImgs.appendChild(photoCardDOM);
@@ -50,18 +58,45 @@ async function init() {
   // Récupère l'id de l'URL
   const idRequested = window.location.href.split('?')[1];
   // Récupère le photographe demandé
-  const [ photographer ] = photographers.filter(photographer => photographer.id == idRequested);
+  [photographer] = photographers.filter(photographer => photographer.id == idRequested);
   // Récupère le profil du photographe
   const profiles = await getProfiles();
-  const [ profile ] = profiles.filter(profile => profile.photographerId == idRequested);
+  [profile] = profiles.filter(profile => profile.photographerId == idRequested);
   displayData(photographer, profile);
 
   // Récupère les datas des photos
-  const photos = await getPhotos();
+  photos = await getPhotos();
   // Récupère les photos du photographe sélectionné et son nom
-  const photographerPhotos = photos.filter(photo => photo.photographerId == idRequested);
-  const name = photographer.name;
-  displayPhotos(name, photographerPhotos);
+  photos = photos.filter(photo => photo.photographerId == idRequested);
+  // sortPhotos -> displayPhotos by default SORT (popularite)
+  sortPhotos();
 };
 
 init();
+
+
+////////////////////
+// FUNCTIONS PAGE //
+
+// DOM selectors
+const sortBy = document.querySelector('#sort-by');
+
+// SORT PHOTOS
+sortBy.addEventListener('change', sortPhotos);
+function sortPhotos() {
+  portfolioImgs.innerHTML = '';
+  switch (sortBy.value) {
+    case 'popularite':
+      photos = photos.sort((a, b) => a.likes - b.likes);
+      displayPhotos(photographer.name, photos);
+      break;
+    case 'date':
+      photos = photos.sort((a, b) => a.date > b.date ? 1 : -1);
+      displayPhotos(photographer.name, photos);
+      break;
+    case 'titre':
+      photos = photos.sort( (a, b) => a.title > b.title ? 1 : -1 );
+      displayPhotos(photographer.name, photos);
+      break;
+  }
+}

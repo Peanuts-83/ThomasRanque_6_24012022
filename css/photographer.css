@@ -4,10 +4,6 @@
   /*border: 1px dashed red;*/
 }
 
-#contact_modal {
-  display: none;
-}
-
 /* PHOTOGRAPH HEADER */
 .photograph-header {
   display: -webkit-box;
@@ -128,7 +124,7 @@
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
-  font-size: 18px;
+  font-size: 1.2vw;
 }
 
 .portfolio .portfolio-imgs article .photo {
@@ -137,6 +133,7 @@
   padding-top: 100%;
   border-radius: 5px;
   margin-bottom: -10px;
+  cursor: pointer;
 }
 
 .portfolio .portfolio-imgs article h3 {
@@ -158,11 +155,34 @@
           transform: scale(1.2);
 }
 
-/* MODAL CONTACT */
-.modal {
-  border-radius: 5px;
-  background-color: #DB8876;
-  width: 50%;
+/* MODALS */
+.bgtransp {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  cursor: pointer;
+  padding: 30px;
+}
+
+.close:hover {
+  -webkit-filter: brightness(0) saturate(100%) invert(40%) sepia(18%) saturate(2167%) hue-rotate(324deg) brightness(103%) contrast(91%);
+          filter: brightness(0) saturate(100%) invert(40%) sepia(18%) saturate(2167%) hue-rotate(324deg) brightness(103%) contrast(91%);
+}
+
+/* CONTACT MODAL */
+#contact_modal {
+  display: none;
+}
+
+#contact_modal .modal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -176,28 +196,28 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  z-index: 2;
+  border-radius: 5px;
+  background-color: #DB8876;
+  width: 50%;
   padding: 35px;
   margin: auto;
 }
 
-.modal header {
+#contact_modal .modal header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 100%;
 }
 
-.modal header img {
-  cursor: pointer;
-}
-
-.modal header h2 {
+#contact_modal .modal header h2 {
   font-size: 64px;
   font-weight: normal;
   text-align: center;
 }
 
-form {
+#contact_modal form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -211,12 +231,12 @@ form {
           align-items: flex-start;
 }
 
-form label {
+#contact_modal form label {
   color: #312E2E;
   font-size: 36px;
 }
 
-form div {
+#contact_modal form div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -231,10 +251,76 @@ form div {
   margin-bottom: 26px;
 }
 
-form input {
+#contact_modal form input {
   width: 100%;
   height: 68px;
   border: none;
   border-radius: 5px;
+}
+
+/* PHOTO MODAL */
+#photo_modal {
+  display: none;
+  position: absolute;
+  left: 100px;
+  z-index: 2;
+}
+
+#photo_modal .modal {
+  position: relative;
+  background-color: white;
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  padding: 20px 0;
+}
+
+#photo_modal .modal .close {
+  -webkit-filter: brightness(0) saturate(100%) invert(16%) sepia(47%) saturate(3671%) hue-rotate(343deg) brightness(97%) contrast(98%);
+          filter: brightness(0) saturate(100%) invert(16%) sepia(47%) saturate(3671%) hue-rotate(343deg) brightness(97%) contrast(98%);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#photo_modal .modal .close:hover {
+  -webkit-filter: brightness(0) saturate(100%) invert(40%) sepia(18%) saturate(2167%) hue-rotate(324deg) brightness(103%) contrast(91%);
+          filter: brightness(0) saturate(100%) invert(40%) sepia(18%) saturate(2167%) hue-rotate(324deg) brightness(103%) contrast(91%);
+}
+
+#photo_modal .modal nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+#photo_modal .modal nav .previous, #photo_modal .modal nav .next {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px;
+  font-size: 50px;
+  color: var(--red);
+  height: 100%;
+  cursor: pointer;
+}
+
+#photo_modal .modal nav .previous:hover, #photo_modal .modal nav .next:hover {
+  color: var(--red-hover);
+}
+
+#photo_modal .modal .photo {
+  border-radius: 5px;
+}
+
+#photo_modal h3 {
+  color: var(--red);
 }
 /*# sourceMappingURL=photographer.css.map */

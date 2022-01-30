@@ -1,64 +1,88 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-      <link href="css/normalize.css" rel="stylesheet" type="text/css" />
-      <link href="css/style.css" rel="stylesheet" type="text/css" />
-      <meta charset="utf-8">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
+<head>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-    <header>
-      <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
-    </header>
+  <link href="css/normalize.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <title>Fisheye - photographe </title>
+</head>
 
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
+<body>
 
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+  <header>
+    <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
+  </header>
 
-    <section class="portfolio">
-      <strong>Trier par</strong>
-      <select class="sortBy" >
-      </select>
-      <div class="portfolio-imgs"></div>
-    </section>
-
-    <div id="photo_modal">
-      
+  <main id="main">
+    <div class="photograph-header">
+      <button class="contact_button" >Contactez-moi</button>
     </div>
+  </main>
 
-    <svg width='200' height='200'>
-      <mask id="svgmask">
-        <circle fill="#ffffff" cx="100" cy="100" r="90"></circle>
-      </mask>
-    </svg>
 
-    <script src="./scripts/factories/photographer.js"></script>
-    <script src="./scripts/factories/photos.js"></script>
-    <script src="./scripts/pages/photographer.js"></script>
-    <script src="./scripts/utils/contactForm.js"></script>
-  </body>
+  <div class="bgtransp">
+  </div>
+
+
+  <div id="contact_modal">
+    <div class="modal">
+      <header>
+        <h2>Contactez-moi</h2>
+        <img src="assets/icons/close.svg" class="close" />
+      </header>
+      <form>
+        <div>
+          <label>Prénom</label>
+          <input />
+        </div>
+        <button class="contact_button">Envoyer</button>
+      </form>
+    </div>
+  </div>
+
+
+  <section class="portfolio">
+    <label for="#sort-by"><strong>Trier par</strong></label>
+    <select id="sort-by">
+      <option value="popularite">Popularité</option>
+      <option value="date">Date</option>
+      <option value="titre">Titre</option>
+    </select>
+    <div class="portfolio-imgs"></div>
+  </section>
+
+
+  <div id="photo_modal">
+    <div class="modal">
+      <img src="assets/icons/close.svg" class="close" />
+      <nav>
+        <div class="previous"><i class="fas fa-chevron-left"></i></div>
+        <div class="photo-details">
+          <img alt="big photo" class="photo">
+          <h3></h3>
+        </div>
+        <div class="next"><i class="fas fa-chevron-right"></i></div>
+      </nav>
+    </div>
+  </div>
+
+
+  <svg width='200' height='200'>
+    <mask id="svgmask">
+      <circle fill="#ffffff" cx="100" cy="100" r="90"></circle>
+    </mask>
+  </svg>
+
+  <script src="./scripts/factories/photographer.js"></script>
+  <script src="./scripts/factories/photos.js"></script>
+  <script src="./scripts/pages/photographer.js"></script>
+  <script src="./scripts/utils/modals.js"></script>
+</body>
+
 </html>

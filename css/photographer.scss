@@ -3,9 +3,6 @@
     /*border: 1px dashed red;*/
 }
 
-#contact_modal {
-    display: none;
-}
 
 /* PHOTOGRAPH HEADER */
 .photograph-header {
@@ -88,13 +85,14 @@
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: baseline;
-            font-size: 18px;
+            font-size: 1.2vw;
             .photo {
                 /* Square responsive imgs */
                 width: 100%;
                 padding-top: 100%;
                 border-radius: 5px;
                 margin-bottom: -10px;
+                cursor: pointer;
             }
             h3 {
                 color: var(--red);
@@ -114,59 +112,119 @@
     }
 }
 
-
-/* MODAL CONTACT */
-
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
-}
-
-.modal header {
-    justify-content: space-between;
+/* MODALS */
+.bgtransp {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
     width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.3);
 }
 
-.modal header img {
+.close {
     cursor: pointer;
+    padding: 30px;
+    &:hover {
+        filter: brightness(0) saturate(100%) invert(40%) sepia(18%) saturate(2167%) hue-rotate(324deg) brightness(103%) contrast(91%);
+    }
 }
 
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+/* CONTACT MODAL */
+#contact_modal {
+    display: none;
+    .modal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 2;
+        border-radius: 5px;
+        background-color: #DB8876;
+        width: 50%;
+        padding: 35px;
+        margin: auto;
+        header {
+            justify-content: space-between;
+            width: 100%;
+            h2 {
+                font-size: 64px;
+                font-weight: normal;
+                text-align: center;
+            }
+        }
+    }
+    form {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        label {
+            color: #312E2E;
+            font-size: 36px;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: self-start;
+            margin-bottom: 26px;
+        }
+        input {
+            width: 100%;
+            height: 68px;
+            border: none;
+            border-radius: 5px;
+        }
+    }
 }
 
-form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-form label {
-    color: #312E2E;
-    font-size: 36px;
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-}
-
-form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+/* PHOTO MODAL */
+#photo_modal {
+    display: none;
+    position: absolute;
+    left: 100px;
+    z-index: 2;
+    .modal {
+        position: relative;
+        background-color: white;
+        box-shadow: 3px 3px 5px rgba(0,0,0,.4);
+        width: 100%;
+        padding: 20px 0;
+        .close {
+            // change SVG color to #901C1C (var(--red))
+            filter: brightness(0) saturate(100%) invert(16%) sepia(47%) saturate(3671%) hue-rotate(343deg) brightness(97%) contrast(98%);
+            position: absolute;
+            top: 0;
+            right: 0;
+            &:hover {
+                filter: brightness(0) saturate(100%) invert(40%) sepia(18%) saturate(2167%) hue-rotate(324deg) brightness(103%) contrast(91%);
+            }
+        }
+        nav {
+            display: flex;
+            height: 100%;
+            align-items: stretch;
+            .previous, .next {
+                display: flex;
+                align-items: center;
+                padding: 30px;
+                font-size: 50px;
+                color: var(--red);
+                height: 100%;
+                cursor: pointer;
+                &:hover {
+                    color: var(--red-hover);
+                }
+            }
+        }
+        .photo {
+            border-radius: 5px;
+        }
+    }
+    h3 {
+        color: var(--red);
+    }
 }

@@ -1,23 +1,80 @@
+let selectedMedia, firstname;
+
 function photosFactory(name, data) {
-  const { id,photographerId, title, image, likes, date, price } = data;
-  const firstname = name.split(' ')[0];
-  const picture = `assets/photos/${firstname}/${image}`;
+  const { id, photographerId, title, image, video, likes, date, price } = data;
+  firstname = name.split(' ')[0];
+  const photoModal = document.querySelector('#photo_modal');
+  const bgtransp = document.querySelector('.bgtransp');
+  let mediaType, media;
+
+  // AVAILABLE MEDIA: IMAGE || VIDEO ?
+  mediaType = image ? 'image' : 'video';
+  // MEDIA SRC
+  mediaType == 'image' ? media = `assets/photos/${firstname}/${image}` : media = `assets/photos/${firstname}/${video}`;
+
 
   function getPhotoCardDOM() {
+    // CREATE ELEMENTS
     const article = document.createElement('article');
-    const divImg = document.createElement('div');
+    const imgDiv = document.createElement('div');
+    const videoDiv = document.createElement('video');
+    const canvas = document.createElement('canvas');
     const h3 = document.createElement('h3');
     const rating = document.createElement('span');
 
-    divImg.style.background = `#fff url(${picture}) no-repeat`;
-    divImg.style['background-size'] = 'cover';
-    divImg.className = 'photo';
+    // ADDEVENTLISTENER ON IMG
+    imgDiv.onclick = () => {
+      const photo = photoModal.querySelector('.photo');
+      const titleModal = photoModal.querySelector('h3');
+      const windowWidth = window.innerWidth;
+      // Top position near top window position
+      photoModal.style.top = window.scrollY + 30 + 'px';
+      photo.src = media;
+      // width =~ 90% of windowWidth
+      photo.style.width = windowWidth - 395 + 'px';
+      titleModal.innerText = title;
+      selectedMedia = image ? image : video;
+      displayModal('photo_modal');
+    }
+
+    // MAKE IMG
+    if (mediaType == 'image') {
+      // PLACE IMG TO ARTICLE
+      imgDiv.style.background = `#ccc url(${media}) no-repeat`;
+      imgDiv.style['background-size'] = 'cover';
+      imgDiv.className = 'photo';
+    } else {
+      // BUILD VIDEO
+      videoDiv.src = media;
+      videoDiv.type = 'video/mp4';
+      // BUILD CANVAS
+      videoDiv.onloadedmetadata = () => {
+        canvas.width = videoDiv.videoWidth;
+        canvas.height = videoDiv.videoHeight;
+        canvas.ratio = videoDiv.videoWidth / videoDiv.videoHeight;
+      }
+      videoDiv.onloadeddata = () => {
+        // CENTER CANVAS POS & SNAP TO videoImage
+        let xPos = canvas.width > canvas.height ? canvas.width / 2 / canvas.ratio * -1 : 0;
+        let yPos = canvas.width < canvas.height ? canvas.height / 2 / canvas.ratio * -1 : 0;
+        canvas.getContext('2d').drawImage(videoDiv, xPos, yPos);
+        let videoImage = canvas.toDataURL('image/png');
+        videoImage.ref = media;
+        // MAKE PREVIEW VIDEO FROM CANVAS TO ARTICLE
+        imgDiv.style.background = `#ccc url(${videoImage}) no-repeat`;
+        imgDiv.style['background-size'] = 'cover';
+        imgDiv.className = 'photo';
+      }
+    }
+
+    // MAKE TITLE + RATING
     h3.innerText = title;
     rating.innerHTML = `${likes} <i class="fas fa-heart"></i>`;
     rating.className = 'rating';
     rating.addEventListener('click', ratingIncrement);
 
-    article.appendChild(divImg);
+    // BUILD ARTICLE
+    article.appendChild(imgDiv);
     article.appendChild(h3);
     article.appendChild(rating);
 
@@ -31,4 +88,11 @@ function photosFactory(name, data) {
 // TODO: ratings memory ? //
 function ratingIncrement() {
   this.innerHTML = `${+this.innerText + 1} <i class="fas fa-heart"></i>`;
+}
+
+// PHOTO MODAL CLOSE
+function closePhotoModal() {
+  const photoModal = document.querySelector('#photo_modal');
+  const bgtransp = photoModal.parentElement;
+  bgtransp.style.display = 'none';
 }
