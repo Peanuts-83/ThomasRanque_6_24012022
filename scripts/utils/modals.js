@@ -1,11 +1,7 @@
 function initModals() {
-    const contact = document.querySelector('.contact_button');
-    const previous = document.querySelector('.previous');
-    const next = document.querySelector('.next');
-
     contact.onclick = () => { displayModal('contact_modal') };
-    previous.onclick = () => { previousPhoto() };
-    next.onclick = () => { nextPhoto() };
+    previous.onclick = () => { changeMedia('prev') };
+    next.onclick = () => { changeMedia('next') };
     document.querySelectorAll('.modal').forEach(modal => {
         const parent = modal.parentElement;
         const close = modal.querySelector('.close');
@@ -14,47 +10,65 @@ function initModals() {
 }
 
 
-function displayModal(name) {
+function displayModal(name, mediaType) {
     const modal = document.querySelector(`#${name}`);
-    const bgtransp = document.querySelector('.bgtransp');
+    // DETECT TYPE OF MEDIA TO SHOW IF mediaType PROVIDED
+    if (mediaType) {
+        mediaType == 'video' ?
+            videoMedia.style.display = 'block'
+            :
+            photoMedia.style.display = 'block';
+    }
     modal.style.display = 'flex';
     bgtransp.style.display = 'block';
 }
 
 function closeModal(parent) {
-    const bgtransp = document.querySelector('.bgtransp');
     bgtransp.style.display = 'none';
     parent.style.display = 'none';
 }
 
-function previousPhoto() {
-    const photo = document.querySelector('#photo_modal .photo');
-    const h3 = document.querySelector('#photo_modal h3');
-    const id = photos.indexOf(photos.filter(photo => photo.image == selectedMedia)[0]);
 
-    if (id > 0) {
+function changeMedia(way) {
+    // GET INDEX OF ACTUAL MEDIA IN ARRAY
+    const id = photos.indexOf(photos.filter(photo => photo.image == selectedMedia || photo.video == selectedMedia)[0]);
+
+    // SELECT NEW MEDIA DEPENDING ON WAY
+    if (way == 'prev' && id > 0) {
         const newMedia = photos[id - 1];
-        const media = newMedia.image ? 'image' : 'video';
-        photo.src = `assets/photos/${firstname}/${newMedia[media]}`;
-        h3.innerText = newMedia.title;
-        selectedMedia = newMedia[media];
-    }
-}
-
-function nextPhoto() {
-    const photo = document.querySelector('#photo_modal .photo');
-    const h3 = document.querySelector('#photo_modal h3');
-    const id = photos.indexOf(photos.filter(photo => photo.image == selectedMedia)[0]);
-
-    if (id < photos.length - 1) {
+        operate(newMedia);
+    } else if (way == 'next' && id < photos.length - 1) {
         const newMedia = photos[id + 1];
-        const media = newMedia.image ? 'image' : 'video';
-        photo.src = `assets/photos/${firstname}/${newMedia[media]}`;
-        h3.innerText = newMedia.title;
-        selectedMedia = newMedia[media];
+        operate(newMedia);
+    }
+
+    function operate(newMedia) {
+        clearMedia();
+        const mediaType = newMedia.image ? 'image' : 'video';
+        const windowWidth = window.innerWidth;
+
+        // SET NEW MEDIA SRC & WIDTH
+        mediaType == 'image' ?
+            (photoMedia.src = `./assets/photos/${firstname}/${newMedia[mediaType]}`,
+            photoMedia.style.width = windowWidth - 395 + 'px')
+            :
+            (videoMedia.src = `./assets/photos/${firstname}/${newMedia[mediaType]}`,
+            videoMedia.style.width = windowWidth - 395 + 'px');
+        h3Media.innerText = newMedia.title;
+        selectedMedia = newMedia[mediaType];
+
+        // DISPLAY NEW MEDIA
+        displayModal('photo_modal', mediaType);
     }
 }
 
 
+function clearMedia() {
+    // SET BOTH PHOTO & VIDEO TO HIDDEN
+    photoMedia.src = '';
+    photoMedia.style.display = 'none';
+    videoMedia.src = '';
+    videoMedia.style.display = 'none';
+}
 
 initModals();

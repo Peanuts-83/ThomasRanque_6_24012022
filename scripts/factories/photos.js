@@ -1,16 +1,26 @@
+// DOM ELEMENTS //
+const bgtransp = document.querySelector('.bgtransp');
+const photoMedia = document.querySelector('#photo_modal .photo');
+const videoMedia = document.querySelector('#photo_modal .video');
+const h3Media = document.querySelector('#photo_modal h3');
+const contact = document.querySelector('.contact_button');
+const previous = document.querySelector('.previous');
+const next = document.querySelector('.next');
+
+// GLOBALS //
 let selectedMedia, firstname;
+
 
 function photosFactory(name, data) {
   const { id, photographerId, title, image, video, likes, date, price } = data;
   firstname = name.split(' ')[0];
   const photoModal = document.querySelector('#photo_modal');
-  const bgtransp = document.querySelector('.bgtransp');
   let mediaType, media;
 
   // AVAILABLE MEDIA: IMAGE || VIDEO ?
   mediaType = image ? 'image' : 'video';
   // MEDIA SRC
-  mediaType == 'image' ? media = `assets/photos/${firstname}/${image}` : media = `assets/photos/${firstname}/${video}`;
+  media = mediaType == 'image' ? `./assets/photos/${firstname}/${image}` : `./assets/photos/${firstname}/${video}`;
 
 
   function getPhotoCardDOM() {
@@ -24,17 +34,23 @@ function photosFactory(name, data) {
 
     // ADDEVENTLISTENER ON IMG
     imgDiv.onclick = () => {
-      const photo = photoModal.querySelector('.photo');
-      const titleModal = photoModal.querySelector('h3');
       const windowWidth = window.innerWidth;
       // Top position near top window position
       photoModal.style.top = window.scrollY + 30 + 'px';
-      photo.src = media;
-      // width =~ 90% of windowWidth
-      photo.style.width = windowWidth - 395 + 'px';
-      titleModal.innerText = title;
+      clearMedia();
+
+      // Choose media to display
+      if (mediaType == 'image') {
+        photoMedia.src = media;
+        photoMedia.style.width = windowWidth - 395 + 'px';
+      } else if (mediaType == 'video') {
+        videoMedia.src = media;
+        videoMedia.style.width = windowWidth - 395 + 'px';
+      }
+
+      h3Media.innerText = title;
       selectedMedia = image ? image : video;
-      displayModal('photo_modal');
+      displayModal('photo_modal', mediaType);
     }
 
     // MAKE IMG
@@ -83,6 +99,7 @@ function photosFactory(name, data) {
 
   return { getPhotoCardDOM }
 }
+
 
 // RATING INCREMENT
 // TODO: ratings memory ? //
