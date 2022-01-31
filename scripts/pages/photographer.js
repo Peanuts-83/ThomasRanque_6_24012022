@@ -71,7 +71,7 @@ async function init() {
   // Récupère les photos du photographe sélectionné et son nom
   photos = photos.filter(photo => photo.photographerId == idRequested);
   // sortPhotos -> displayPhotos by default SORT (popularite)
-  sortPhotos();
+  sortMedia();
 };
 
 
@@ -82,13 +82,19 @@ init();
 // FUNCTIONS PAGE //
 
 // DOM selectors
-const sortBy = document.querySelector('#sort-by');
+const sort = document.querySelector('.sort-by');
+const options = sort.querySelectorAll('li');
+const inputs = sort.querySelectorAll('input');
+const labels = sort.querySelectorAll('label');
+const arrow = [...labels].filter(label => label.checked == true);
 
 // SORT PHOTOS
-sortBy.addEventListener('change', sortPhotos);
-function sortPhotos() {
+sort.addEventListener('change', sortMedia);
+function sortMedia() {
+  setOption();
+
   portfolioImgs.innerHTML = '';
-  switch (sortBy.value) {
+  switch (sort.target) {
     case 'popularite':
       photos = photos.sort((a, b) => a.likes - b.likes);
       displayPhotos(photographer.name, photos);
@@ -104,4 +110,26 @@ function sortPhotos() {
   }
 }
 
-//
+// SELECT OPTION & ACTIVATE SORT FUNCTION
+function setOption() {
+  options.forEach(li => {
+    li.classList.remove('selected');
+    const input = li.querySelector('input');
+    if (input.checked == true) {
+      li.classList.add('selected');
+      sort.target = input.title;
+      toggleSortMenu();
+    }
+  })
+}
+
+// SORT MENU TOGGLE
+sort.addEventListener('click', toggleSortMenu);
+function toggleSortMenu() {
+    options.forEach(li => {
+    li.classList.contains('active') ?
+      li.classList.replace('active', 'inactive')
+      :
+      li.classList.replace('inactive', 'active');
+  })
+}

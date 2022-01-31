@@ -82,18 +82,102 @@ button {
 
 /* SECTION PORTFOLIO */
 .portfolio {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     margin: 50px 100px;
+    font-size: 20px;
+    font-weight: bold;
+    // border: 1px dashed red;
     * {
-        /*border: 1px dashed red;*/
+        // border: 1px dashed red;
     }
+    strong {
+        margin-top: 20px;
+    }
+    ul {
+        position: absolute;
+        top: -5px;
+        z-index: 1;
+        padding: 20px;
+        margin: 5px 20px;
+        width: 200px;
+        border-radius: 5px;
+        overflow-y: auto;
+        list-style: none;
+        background-color: var(--red);
+        color: white;
+        cursor: pointer;
+        * {
+            cursor: pointer;
+        }
+        li {
+            padding: 10px 0;
+            border-bottom: 1px solid white;
+            input[type=radio] {
+             display: none;
+            }
+        }
+        .inactive {
+            display: none;
+        }
+        .active {
+            display: block;
+            padding: 10px 0;
+        }
+        .selected {
+            position: relative;
+            padding: 0;
+            &.inactive {
+                display: block;
+                border-bottom: 0;
+                padding-bottom: 0;
+                ::after {
+                    content: '\f078';
+                    font-family: "Font Awesome 5 Pro";
+                    position: absolute;
+                    right: 10px;
+                    padding: 0 0 0 20px;
+                }
+            }
+        }
+
+        li:nth-child(1) {
+            position: relative;
+            padding-top: 0;
+            &.active {
+                ::after {
+                    content: '\f077';
+                    font-family: "Font Awesome 5 Pro";
+                    position: absolute;
+                    right: 10px;
+                    padding: 0 0 0 20px;
+                }
+            }
+        }
+        li:nth-last-child(1) {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+    }
+
+
+
+
+
+
     .sort {
+        display: none;
+    }
+    /*.sort {
         position: relative;
         display: flex;
         flex-wrap: wrap;
         align-items: start;
         font-size: 20px;
         font-weight: bold;
-        
+
         label {
             margin-top: 20px;
             margin-right: 5px;
@@ -138,9 +222,7 @@ button {
                 background-color: var(--red);
             }
         }
-
-
-    }
+    }*/
 
     .portfolio-imgs {
         display: grid;
@@ -179,12 +261,12 @@ button {
                 cursor: pointer;
                 padding: 5px;
                 color: var(--red);
-                    &:hover {
-                        color: var(--red-hover);
-                    }
-                    &:active {
-                        transform: scale(1.2);
-                    }
+                &:hover {
+                    color: var(--red-hover);
+                }
+                &:active {
+                    transform: scale(1.2);
+                }
             }
         }
     }

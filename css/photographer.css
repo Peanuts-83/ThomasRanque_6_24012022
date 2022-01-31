@@ -109,75 +109,153 @@ button:hover, button:active {
 
 /* SECTION PORTFOLIO */
 .portfolio {
-  margin: 50px 100px;
-}
-
-.portfolio * {
-  /*border: 1px dashed red;*/
-}
-
-.portfolio .sort {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 50px 100px;
   font-size: 20px;
   font-weight: bold;
+  /*.sort {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: start;
+        font-size: 20px;
+        font-weight: bold;
+
+        label {
+            margin-top: 20px;
+            margin-right: 5px;
+        }
+        .box {
+            position: absolute;
+            left: 60px;
+            margin-left: 15px;
+            border-radius: 5px;
+            border: 0;
+            select {
+                margin-left: 20px;
+                padding: 20px 30px;
+                border-radius: 5px;
+                border: 0;
+                background-color: var(--red);
+                color: white;
+                text-align: left;
+            }
+            &::before {
+                content: "\f078";
+                font-family: "Font Awesome 5 Pro";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 20%;
+                height: 100%;
+                border-radius: 5px;
+                text-align: center;
+                line-height: 60px;
+                color: white;
+                background-color: var(--red);
+                pointer-events: none;
+            }
+            &:hover::before {
+                background-color: var(--red-hover);
+            }
+            option {
+                font-weight: bold;
+                padding: 40px;
+                border-bottom: 1px solid grey;
+                background-color: var(--red);
+            }
+        }
+    }*/
 }
 
-.portfolio .sort label {
+.portfolio strong {
   margin-top: 20px;
-  margin-right: 5px;
 }
 
-.portfolio .sort .box {
+.portfolio ul {
   position: absolute;
-  left: 60px;
-  margin-left: 15px;
+  top: -5px;
+  z-index: 1;
+  padding: 20px;
+  margin: 5px 20px;
+  width: 200px;
   border-radius: 5px;
-  border: 0;
-}
-
-.portfolio .sort .box select {
-  margin-left: 20px;
-  padding: 20px 30px;
-  border-radius: 5px;
-  border: 0;
+  overflow-y: auto;
+  list-style: none;
   background-color: var(--red);
   color: white;
-  text-align: left;
+  cursor: pointer;
 }
 
-.portfolio .sort .box::before {
-  content: "\f078";
+.portfolio ul * {
+  cursor: pointer;
+}
+
+.portfolio ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid white;
+}
+
+.portfolio ul li input[type=radio] {
+  display: none;
+}
+
+.portfolio ul .inactive {
+  display: none;
+}
+
+.portfolio ul .active {
+  display: block;
+  padding: 10px 0;
+}
+
+.portfolio ul .selected {
+  position: relative;
+  padding: 0;
+}
+
+.portfolio ul .selected.inactive {
+  display: block;
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.portfolio ul .selected.inactive ::after {
+  content: '\f078';
   font-family: "Font Awesome 5 Pro";
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 20%;
-  height: 100%;
-  border-radius: 5px;
-  text-align: center;
-  line-height: 60px;
-  color: white;
-  background-color: var(--red);
-  pointer-events: none;
+  right: 10px;
+  padding: 0 0 0 20px;
 }
 
-.portfolio .sort .box:hover::before {
-  background-color: var(--red-hover);
+.portfolio ul li:nth-child(1) {
+  position: relative;
+  padding-top: 0;
 }
 
-.portfolio .sort .box option {
-  font-weight: bold;
-  padding: 40px;
-  border-bottom: 1px solid grey;
-  background-color: var(--red);
+.portfolio ul li:nth-child(1).active ::after {
+  content: '\f077';
+  font-family: "Font Awesome 5 Pro";
+  position: absolute;
+  right: 10px;
+  padding: 0 0 0 20px;
+}
+
+.portfolio ul li:nth-last-child(1) {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.portfolio .sort {
+  display: none;
 }
 
 .portfolio .portfolio-imgs {
