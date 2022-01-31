@@ -15,7 +15,8 @@ function displayModal(name, mediaType) {
     // DETECT TYPE OF MEDIA TO SHOW IF mediaType PROVIDED
     if (mediaType) {
         mediaType == 'video' ?
-            videoMedia.style.display = 'block'
+            (videoMedia.style.display = 'block',
+            videoMedia.controls = true)
             :
             photoMedia.style.display = 'block';
     }

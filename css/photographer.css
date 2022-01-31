@@ -273,6 +273,7 @@
           box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
   width: 100%;
   padding: 20px 0;
+  border-radius: 5px;
 }
 
 #photo_modal .modal .close {

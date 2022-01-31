@@ -193,6 +193,7 @@
         box-shadow: 3px 3px 5px rgba(0,0,0,.4);
         width: 100%;
         padding: 20px 0;
+        border-radius: 5px;
         .close {
             // change SVG color to #901C1C (var(--red))
             filter: brightness(0) saturate(100%) invert(16%) sepia(47%) saturate(3671%) hue-rotate(343deg) brightness(97%) contrast(98%);
