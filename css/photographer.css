@@ -129,11 +129,23 @@
 
 .portfolio .portfolio-imgs article .photo {
   /* Square responsive imgs */
+  position: relative;
   width: 100%;
   padding-top: 100%;
   border-radius: 5px;
   margin-bottom: -10px;
   cursor: pointer;
+}
+
+.portfolio .portfolio-imgs article .photo .fa-play-circle {
+  font-size: 50px;
+  color: white;
+  opacity: .5;
+  text-shadow: 1px 1px 5px black;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 30px;
 }
 
 .portfolio .portfolio-imgs article h3 {

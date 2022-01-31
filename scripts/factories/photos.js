@@ -1,5 +1,6 @@
 // DOM ELEMENTS //
 const bgtransp = document.querySelector('.bgtransp');
+const modalMedia = document.querySelector('#photo_modal');
 const photoModal = document.querySelector('#photo_modal .photo');
 const videoModal = document.querySelector('#photo_modal .video');
 const h3Modal = document.querySelector('#photo_modal h3');
@@ -14,7 +15,6 @@ let selectedMedia, firstname;
 function photosFactory(name, data) {
   const { id, photographerId, title, image, video, likes, date, price } = data;
   firstname = name.split(' ')[0];
-  const modalMedia = document.querySelector('#photo_modal');
   let mediaType, media;
 
   // AVAILABLE MEDIA: IMAGE || VIDEO ?
@@ -38,7 +38,6 @@ function photosFactory(name, data) {
       // Top position near top window position
       modalMedia.style.top = window.scrollY + 30 + 'px';
       clearMedia();
-
       // Choose media to display
       if (mediaType == 'image') {
         photoModal.src = media;
@@ -47,7 +46,6 @@ function photosFactory(name, data) {
         videoModal.src = media;
         videoModal.style.width = windowWidth - 395 + 'px';
       }
-
       h3Modal.innerText = title;
       selectedMedia = image ? image : video;
       displayModal('photo_modal', mediaType);
@@ -75,8 +73,8 @@ function photosFactory(name, data) {
         let yPos = canvas.width < canvas.height ? canvas.height / 2 / canvas.ratio * -1 : 0;
         canvas.getContext('2d').drawImage(videoDiv, xPos, yPos);
         let videoImage = canvas.toDataURL('image/png');
-        videoImage.ref = media;
         // MAKE PREVIEW VIDEO FROM CANVAS TO ARTICLE
+        imgDiv.innerHTML = '<i class="far fa-play-circle"></i>';
         imgDiv.style.background = `#ccc url(${videoImage}) no-repeat`;
         imgDiv.style['background-size'] = 'cover';
         imgDiv.className = 'photo';
@@ -109,7 +107,6 @@ function ratingIncrement() {
 
 // PHOTO MODAL CLOSE
 function closePhotoModal() {
-  const modalMedia = document.querySelector('#photo_modal');
   const bgtransp = modalMedia.parentElement;
   bgtransp.style.display = 'none';
 }
