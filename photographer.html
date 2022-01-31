@@ -36,10 +36,16 @@
         <h2>Contactez-moi</h2>
         <img src="./assets/icons/close.svg" class="close" />
       </header>
-      <form>
+      <form action="./photographer.html" method="get" onsubmit="return readData();">
         <div>
-          <label>Prénom</label>
-          <input />
+          <label for="#prenom">Prénom</label>
+          <input type="text" id="prenom" name="prenom"/>
+          <label for="#nom">Nom</label>
+          <input type="text" id="nom" name="nom"/>
+          <label for="#email">Email</label>
+          <input type="text" id="email" name="email"/>
+          <label for="#message">Message</label>
+          <textarea rows="4" id="message" name="message"></textarea>
         </div>
         <button class="contact_button">Envoyer</button>
       </form>

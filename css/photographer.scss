@@ -3,6 +3,20 @@
     /*border: 1px dashed red;*/
 }
 
+button {
+    cursor: pointer;
+    background-color: var(--red);
+    padding: 20px 40px;
+    border: 0;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    &:hover, &:active {
+        background-color: var(--red-hover);
+        color: black;
+    }
+}
+
 
 /* PHOTOGRAPH HEADER */
 .photograph-header {
@@ -38,16 +52,10 @@
     }
     .contact_button {
         font-size: 20px;
-        font-weight: bold;
-        color: white;
         padding: 11px;
         margin: 100px 0;
         width: 170px;
         height: 70px;
-        border: none;
-        background-color: #901C1C;
-        border-radius: 5px;
-        cursor: pointer;
     }
     .profile {
         position: relative;
@@ -137,35 +145,50 @@
 
 .close {
     cursor: pointer;
-    padding: 30px;
+    padding: 15px;
     &:hover {
         filter: brightness(0) saturate(100%) invert(40%) sepia(18%) saturate(2167%) hue-rotate(324deg) brightness(103%) contrast(91%);
     }
 }
 
+// TODO: resize modals on window.resize
 /* CONTACT MODAL */
 #contact_modal {
     display: none;
+    position: absolute;
+    z-index: 2;
+    * {
+        /*border: 1px dashed red;*/
+    }
     .modal {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        z-index: 2;
+        justify-content: flex-start;
+        width: 660px;
         border-radius: 5px;
         background-color: #DB8876;
-        width: 50%;
         padding: 35px;
         margin: auto;
+        box-shadow: 3px 3px 5px rgba(0,0,0,.4);
         header {
+            display: flex;
+            flex: 1;
             justify-content: space-between;
+            align-items: flex-start;
             width: 100%;
             h2 {
                 font-size: 64px;
                 font-weight: normal;
-                text-align: center;
+                color: black;
+                margin: 0 0 20px 0;
             }
         }
+        textarea {
+            width: 100%;
+            resize: none;
+        }
+
     }
     form {
         display: flex;
@@ -211,6 +234,7 @@
             position: absolute;
             top: 0;
             right: 0;
+            padding: 30px;
             &:hover {
                 filter: brightness(0) saturate(100%) invert(40%) sepia(18%) saturate(2167%) hue-rotate(324deg) brightness(103%) contrast(91%);
             }

@@ -4,7 +4,6 @@ const modalMedia = document.querySelector('#photo_modal');
 const photoModal = document.querySelector('#photo_modal .photo');
 const videoModal = document.querySelector('#photo_modal .video');
 const h3Modal = document.querySelector('#photo_modal h3');
-const contact = document.querySelector('.contact_button');
 const previous = document.querySelector('.previous');
 const next = document.querySelector('.next');
 

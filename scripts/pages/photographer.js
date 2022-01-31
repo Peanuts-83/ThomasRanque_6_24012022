@@ -2,6 +2,8 @@
 // INITIALISATION PAGE //
 
 // GLOBALS //
+const contact = document.querySelector('.contact_button');
+const contactModal = document.querySelector('#contact_modal');
 let photographer, photos, profile;
 
 // DOM elements //
@@ -72,6 +74,7 @@ async function init() {
   sortPhotos();
 };
 
+
 init();
 
 
@@ -100,3 +103,5 @@ function sortPhotos() {
       break;
   }
 }
+
+//

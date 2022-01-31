@@ -1,3 +1,5 @@
+////////////
+// MODALS //
 function initModals() {
     contact.onclick = () => { displayModal('contact_modal') };
     previous.onclick = () => { changeMedia('prev') };
@@ -6,19 +8,20 @@ function initModals() {
         const parent = modal.parentElement;
         const close = modal.querySelector('.close');
         close.onclick = () => { closeModal(parent) };
-    })
+    });
 }
-
 
 function displayModal(name, mediaType) {
     const modal = document.querySelector(`#${name}`);
     // DETECT TYPE OF MEDIA TO SHOW IF mediaType PROVIDED
-    if (mediaType) {
+    if (name == 'photo_modal' && mediaType) {
         mediaType == 'video' ?
             (videoModal.style.display = 'block',
             videoModal.controls = true)
             :
             photoModal.style.display = 'block';
+    } else if (name == 'contact_modal') {
+        feedContact();
     }
     modal.style.display = 'flex';
     bgtransp.style.display = 'block';
@@ -30,6 +33,8 @@ function closeModal(parent) {
 }
 
 
+/////////////////
+// PHOTO MODAL //
 function changeMedia(way) {
     // GET INDEX OF ACTUAL MEDIA IN ARRAY
     const id = photos.indexOf(photos.filter(photo => photo.image == selectedMedia || photo.video == selectedMedia)[0]);
@@ -63,7 +68,6 @@ function changeMedia(way) {
     }
 }
 
-
 function clearMedia() {
     // SET BOTH PHOTO & VIDEO TO HIDDEN
     photoModal.src = '';
@@ -71,5 +75,22 @@ function clearMedia() {
     videoModal.src = '';
     videoModal.style.display = 'none';
 }
+
+
+///////////////////
+// CONTACT MODAL //
+function feedContact() {
+    const windowWidth = window.innerWidth;
+    const h2 = contactModal.querySelector('h2');
+
+    // SET MODAL POSITION X Y
+    contactModal.style.left = `${windowWidth / 2 - 330}px`;
+    contactModal.style.top = `${window.scrollY + 60}px`;
+    // ADD PHOTOGRAPHER NAME
+    h2.innerText = `Contactez-moi ${photographer.name}`;
+}
+
+
+
 
 initModals();
