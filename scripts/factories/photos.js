@@ -1,8 +1,8 @@
 // DOM ELEMENTS //
 const bgtransp = document.querySelector('.bgtransp');
-const photoMedia = document.querySelector('#photo_modal .photo');
-const videoMedia = document.querySelector('#photo_modal .video');
-const h3Media = document.querySelector('#photo_modal h3');
+const photoModal = document.querySelector('#photo_modal .photo');
+const videoModal = document.querySelector('#photo_modal .video');
+const h3Modal = document.querySelector('#photo_modal h3');
 const contact = document.querySelector('.contact_button');
 const previous = document.querySelector('.previous');
 const next = document.querySelector('.next');
@@ -14,7 +14,7 @@ let selectedMedia, firstname;
 function photosFactory(name, data) {
   const { id, photographerId, title, image, video, likes, date, price } = data;
   firstname = name.split(' ')[0];
-  const photoModal = document.querySelector('#photo_modal');
+  const modalMedia = document.querySelector('#photo_modal');
   let mediaType, media;
 
   // AVAILABLE MEDIA: IMAGE || VIDEO ?
@@ -36,19 +36,19 @@ function photosFactory(name, data) {
     imgDiv.onclick = () => {
       const windowWidth = window.innerWidth;
       // Top position near top window position
-      photoModal.style.top = window.scrollY + 30 + 'px';
+      modalMedia.style.top = window.scrollY + 30 + 'px';
       clearMedia();
 
       // Choose media to display
       if (mediaType == 'image') {
-        photoMedia.src = media;
-        photoMedia.style.width = windowWidth - 395 + 'px';
+        photoModal.src = media;
+        photoModal.style.width = windowWidth - 395 + 'px';
       } else if (mediaType == 'video') {
-        videoMedia.src = media;
-        videoMedia.style.width = windowWidth - 395 + 'px';
+        videoModal.src = media;
+        videoModal.style.width = windowWidth - 395 + 'px';
       }
 
-      h3Media.innerText = title;
+      h3Modal.innerText = title;
       selectedMedia = image ? image : video;
       displayModal('photo_modal', mediaType);
     }
@@ -109,7 +109,7 @@ function ratingIncrement() {
 
 // PHOTO MODAL CLOSE
 function closePhotoModal() {
-  const photoModal = document.querySelector('#photo_modal');
-  const bgtransp = photoModal.parentElement;
+  const modalMedia = document.querySelector('#photo_modal');
+  const bgtransp = modalMedia.parentElement;
   bgtransp.style.display = 'none';
 }

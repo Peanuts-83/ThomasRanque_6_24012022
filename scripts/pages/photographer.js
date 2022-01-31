@@ -1,7 +1,7 @@
 /////////////////////////
 // INITIALISATION PAGE //
 
-// ROOT VARIABLES //
+// GLOBALS //
 let photographer, photos, profile;
 
 // DOM elements //

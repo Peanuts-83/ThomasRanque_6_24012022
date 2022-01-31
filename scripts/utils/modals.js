@@ -15,10 +15,10 @@ function displayModal(name, mediaType) {
     // DETECT TYPE OF MEDIA TO SHOW IF mediaType PROVIDED
     if (mediaType) {
         mediaType == 'video' ?
-            (videoMedia.style.display = 'block',
-            videoMedia.controls = true)
+            (videoModal.style.display = 'block',
+            videoModal.controls = true)
             :
-            photoMedia.style.display = 'block';
+            photoModal.style.display = 'block';
     }
     modal.style.display = 'flex';
     bgtransp.style.display = 'block';
@@ -50,12 +50,12 @@ function changeMedia(way) {
 
         // SET NEW MEDIA SRC & WIDTH
         mediaType == 'image' ?
-            (photoMedia.src = `./assets/photos/${firstname}/${newMedia[mediaType]}`,
-            photoMedia.style.width = windowWidth - 395 + 'px')
+            (photoModal.src = `./assets/photos/${firstname}/${newMedia[mediaType]}`,
+            photoModal.style.width = windowWidth - 395 + 'px')
             :
-            (videoMedia.src = `./assets/photos/${firstname}/${newMedia[mediaType]}`,
-            videoMedia.style.width = windowWidth - 395 + 'px');
-        h3Media.innerText = newMedia.title;
+            (videoModal.src = `./assets/photos/${firstname}/${newMedia[mediaType]}`,
+            videoModal.style.width = windowWidth - 395 + 'px');
+        h3Modal.innerText = newMedia.title;
         selectedMedia = newMedia[mediaType];
 
         // DISPLAY NEW MEDIA
@@ -66,10 +66,10 @@ function changeMedia(way) {
 
 function clearMedia() {
     // SET BOTH PHOTO & VIDEO TO HIDDEN
-    photoMedia.src = '';
-    photoMedia.style.display = 'none';
-    videoMedia.src = '';
-    videoMedia.style.display = 'none';
+    photoModal.src = '';
+    photoModal.style.display = 'none';
+    videoModal.src = '';
+    videoModal.style.display = 'none';
 }
 
 initModals();
