@@ -112,6 +112,74 @@ button:hover, button:active {
   margin: 50px 100px;
 }
 
+.portfolio * {
+  /*border: 1px dashed red;*/
+}
+
+.portfolio .sort {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.portfolio .sort label {
+  margin-top: 20px;
+  margin-right: 5px;
+}
+
+.portfolio .sort .box {
+  position: absolute;
+  left: 60px;
+  margin-left: 15px;
+  border-radius: 5px;
+  border: 0;
+}
+
+.portfolio .sort .box select {
+  margin-left: 20px;
+  padding: 20px 30px;
+  border-radius: 5px;
+  border: 0;
+  background-color: var(--red);
+  color: white;
+  text-align: left;
+}
+
+.portfolio .sort .box::before {
+  content: "\f078";
+  font-family: "Font Awesome 5 Pro";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 60px;
+  color: white;
+  background-color: var(--red);
+  pointer-events: none;
+}
+
+.portfolio .sort .box:hover::before {
+  background-color: var(--red-hover);
+}
+
+.portfolio .sort .box option {
+  font-weight: bold;
+  padding: 40px;
+  border-bottom: 1px solid grey;
+  background-color: var(--red);
+}
+
 .portfolio .portfolio-imgs {
   display: -ms-grid;
   display: grid;

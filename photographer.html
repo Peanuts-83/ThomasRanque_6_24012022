@@ -21,7 +21,7 @@
 
   <main id="main">
     <div class="photograph-header">
-      <button class="contact_button" >Contactez-moi</button>
+      <button class="contact_button">Contactez-moi</button>
     </div>
   </main>
 
@@ -39,27 +39,31 @@
       <form action="./photographer.html" method="get" onsubmit="return readData();">
         <div>
           <label for="#prenom">Prénom</label>
-          <input type="text" id="prenom" name="prenom"/>
+          <input type="text" id="prenom" name="prenom" />
           <label for="#nom">Nom</label>
-          <input type="text" id="nom" name="nom"/>
+          <input type="text" id="nom" name="nom" />
           <label for="#email">Email</label>
-          <input type="text" id="email" name="email"/>
+          <input type="text" id="email" name="email" />
           <label for="#message">Message</label>
           <textarea rows="4" id="message" name="message"></textarea>
         </div>
-        <button class="contact_button">Envoyer</button>
+        <button type="submit" class="contact_button">Envoyer</button>
       </form>
     </div>
   </div>
 
 
   <section class="portfolio">
-    <label for="#sort-by"><strong>Trier par</strong></label>
-    <select id="sort-by">
-      <option value="popularite">Popularité</option>
-      <option value="date">Date</option>
-      <option value="titre">Titre</option>
-    </select>
+    <div class="sort">
+      <label for="#sort-by"><strong>Trier par</strong></label>
+      <div class="box">
+        <select id="sort-by">
+          <option value="popularite">Popularité</option>
+          <option value="date">Date</option>
+          <option value="titre">Titre</option>
+        </select>
+      </div>
+    </div>
     <div class="portfolio-imgs"></div>
   </section>
 

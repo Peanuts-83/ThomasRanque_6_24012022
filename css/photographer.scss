@@ -83,6 +83,65 @@ button {
 /* SECTION PORTFOLIO */
 .portfolio {
     margin: 50px 100px;
+    * {
+        /*border: 1px dashed red;*/
+    }
+    .sort {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: start;
+        font-size: 20px;
+        font-weight: bold;
+        
+        label {
+            margin-top: 20px;
+            margin-right: 5px;
+        }
+        .box {
+            position: absolute;
+            left: 60px;
+            margin-left: 15px;
+            border-radius: 5px;
+            border: 0;
+            select {
+                margin-left: 20px;
+                padding: 20px 30px;
+                border-radius: 5px;
+                border: 0;
+                background-color: var(--red);
+                color: white;
+                text-align: left;
+            }
+            &::before {
+                content: "\f078";
+                font-family: "Font Awesome 5 Pro";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 20%;
+                height: 100%;
+                border-radius: 5px;
+                text-align: center;
+                line-height: 60px;
+                color: white;
+                background-color: var(--red);
+                pointer-events: none;
+            }
+            &:hover::before {
+                background-color: var(--red-hover);
+            }
+            option {
+                font-weight: bold;
+                padding: 40px;
+                border-bottom: 1px solid grey;
+                background-color: var(--red);
+            }
+        }
+
+
+    }
+
     .portfolio-imgs {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
