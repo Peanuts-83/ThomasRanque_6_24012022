@@ -32,6 +32,8 @@ function closeModal(parent) {
     parent.style.display = 'none';
 }
 
+initModals();
+
 
 /////////////////
 // PHOTO MODAL //
@@ -79,6 +81,8 @@ function clearMedia() {
 
 ///////////////////
 // CONTACT MODAL //
+
+// POSITION & CONTENT FORM
 function feedContact() {
     const windowWidth = window.innerWidth;
     const h2 = contactModal.querySelector('h2');
@@ -90,7 +94,32 @@ function feedContact() {
     h2.innerText = `Contactez-moi ${photographer.name}`;
 }
 
+// FAKE FORM DATA SEND
+contactForm.addEventListener('submit', readForm);
+function readForm(event) {
+    event.preventDefault();
+    // GET form data & diplay
+    let data = new FormData(contactForm);
+    let contactObj = {};
+    for (const [name,value] of data) {
+        contactObj[name] = value;
+    }
+
+    // FORM VALIDATION
+    if (validateForm(contactObj)) {
+        // VALIDATION OK
+        console.table(contactObj);
+        // CLEAR data & close
+        contactForm.querySelectorAll('.fieldText').forEach(elt => elt.value ='');
+        closeModal(contactModal);
+    } else {
+
+    }
 
 
+}
 
-initModals();
+// VALIDATE FORM // Return true|false
+function validateForm(data) {
+    
+}

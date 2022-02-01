@@ -8,6 +8,7 @@ let photographer, photos, profile;
 const header = document.querySelector('.photograph-header');
 const contact = document.querySelector('.contact_button');
 const contactModal = document.querySelector('#contact_modal');
+const contactForm = document.querySelector('#contact_form');
 const portfolioImgs = document.querySelector('.portfolio-imgs');
 const counter = document.querySelector('.counter');
 const [ rating, price ] = counter.children;
