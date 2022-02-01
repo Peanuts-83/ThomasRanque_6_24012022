@@ -54,42 +54,37 @@
 
 
   <section class="portfolio">
-    <div class="sort">
-      <label for="#sort-by">Trier par</label>
-      <div class="box">
-        <select id="sort-by">
-          <option value="popularite">Popularité</option>
-          <option value="date">Date</option>
-          <option value="titre">Titre</option>
-        </select>
-      </div>
-    </div>
 
     <!-- SELECT MENU SORT -->
-    <strong>Trier par</strong>
-    <div>
-      <form class="sort-by" target="popularite">
-        <ul>
-          <li class="selected inactive">
-            <input type="radio" id="option1" name="sort-option" title="popularite" checked>
-            <label for="option1">Popularité</label>
-          </li>
-          <li class="inactive">
-            <input type="radio" id="option2" name="sort-option" title="date">
-            <label for="option2">Date</label>
-          </li>
-          <li class="inactive">
-            <input type="radio" id="option3" name="sort-option" title="titre">
-            <label for="option3">Titre</label>
-          </li>
-        </ul>
-
-      </form>
+    <div class="sort">
+      <strong>Trier par</strong>
+      <div class="sort-select">
+        <form class="sort-by" target="popularite">
+          <ul>
+            <li class="selected inactive">
+              <i class="fas fa-chevron-up"></i>
+              <i class="fas fa-chevron-down"></i>
+              <input type="radio" id="option1" name="sort-option" title="popularite" checked>
+              <label for="option1">Popularité</label>
+            </li>
+            <li class="inactive">
+              <i class="fas fa-chevron-up"></i>
+              <i class="fas fa-chevron-down"></i>
+              <input type="radio" id="option2" name="sort-option" title="date">
+              <label for="option2">Date</label>
+            </li>
+            <li class="inactive">
+              <i class="fas fa-chevron-up"></i>
+              <i class="fas fa-chevron-down"></i>
+              <input type="radio" id="option3" name="sort-option" title="titre">
+              <label for="option3">Titre</label>
+            </li>
+          </ul>
+        </form>
+      </div>
     </div>
-
-
-
-    <div class="portfolio-imgs"></div>
+    <div class="portfolio-imgs">
+    </div>
   </section>
 
 
@@ -116,8 +111,8 @@
   </svg>
 
   <script src="./scripts/factories/photographer.js"></script>
-  <script src="./scripts/factories/photos.js"></script>
   <script src="./scripts/pages/photographer.js"></script>
+  <script src="./scripts/factories/photos.js"></script>
   <script src="./scripts/utils/modals.js"></script>
 </body>
 

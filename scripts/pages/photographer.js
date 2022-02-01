@@ -57,10 +57,14 @@ function displayPhotos(name, photos) {
 async function init() {
   // Récupère les datas des photographes
   const photographers = await getPhotographers();
-  // Récupère l'id de l'URL
-  const idRequested = window.location.href.split('?')[1];
+  // Récupère l'id de l'URL || SET default id si accès direct
+  let idRequested = window.location.href.split('?')[1];
+  if (!idRequested) {
+    idRequested = 243;
+  }
   // Récupère le photographe demandé
-  [photographer] = photographers.filter(photographer => photographer.id == idRequested);
+  [photographer] = await photographers.filter(photographer => photographer.id == idRequested);
+  console.log(idRequested)
   // Récupère le profil du photographe
   const profiles = await getProfiles();
   [profile] = profiles.filter(profile => profile.photographerId == idRequested);
@@ -86,13 +90,15 @@ const sort = document.querySelector('.sort-by');
 const options = sort.querySelectorAll('li');
 const inputs = sort.querySelectorAll('input');
 const labels = sort.querySelectorAll('label');
-const arrow = [...labels].filter(label => label.checked == true);
+const [ arrow ] = [...labels].filter(label => label.control.checked);
+
+
 
 // SORT PHOTOS
 sort.addEventListener('change', sortMedia);
+
 function sortMedia() {
   setOption();
-
   portfolioImgs.innerHTML = '';
   switch (sort.target) {
     case 'popularite':
@@ -118,13 +124,13 @@ function setOption() {
     if (input.checked == true) {
       li.classList.add('selected');
       sort.target = input.title;
-      toggleSortMenu();
     }
   })
 }
 
 // SORT MENU TOGGLE
 sort.addEventListener('click', toggleSortMenu);
+labels.forEach(label => label.addEventListener('click', toggleSortMenu));
 function toggleSortMenu() {
     options.forEach(li => {
     li.classList.contains('active') ?

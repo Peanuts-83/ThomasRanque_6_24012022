@@ -36,7 +36,7 @@ button:hover, button:active {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  background-color: #FAFAFA;
+  background-color: var(--grey);
   height: 300px;
   margin: 0 100px;
 }
@@ -53,7 +53,6 @@ button:hover, button:active {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  /*line-height: 10px;*/
 }
 
 .photograph-header .info h1 {
@@ -110,152 +109,96 @@ button:hover, button:active {
 /* SECTION PORTFOLIO */
 .portfolio {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   margin: 50px 100px;
   font-size: 20px;
   font-weight: bold;
-  /*.sort {
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: start;
-        font-size: 20px;
-        font-weight: bold;
-
-        label {
-            margin-top: 20px;
-            margin-right: 5px;
-        }
-        .box {
-            position: absolute;
-            left: 60px;
-            margin-left: 15px;
-            border-radius: 5px;
-            border: 0;
-            select {
-                margin-left: 20px;
-                padding: 20px 30px;
-                border-radius: 5px;
-                border: 0;
-                background-color: var(--red);
-                color: white;
-                text-align: left;
-            }
-            &::before {
-                content: "\f078";
-                font-family: "Font Awesome 5 Pro";
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 20%;
-                height: 100%;
-                border-radius: 5px;
-                text-align: center;
-                line-height: 60px;
-                color: white;
-                background-color: var(--red);
-                pointer-events: none;
-            }
-            &:hover::before {
-                background-color: var(--red-hover);
-            }
-            option {
-                font-weight: bold;
-                padding: 40px;
-                border-bottom: 1px solid grey;
-                background-color: var(--red);
-            }
-        }
-    }*/
 }
 
-.portfolio strong {
+.portfolio .sort {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.portfolio .sort strong {
   margin-top: 20px;
 }
 
-.portfolio ul {
+.portfolio .sort .sort-select {
+  position: relative;
+  width: 250px;
+}
+
+.portfolio .sort .sort-select ul {
   position: absolute;
-  top: -5px;
   z-index: 1;
-  padding: 20px;
+  padding: 0 10px;
   margin: 5px 20px;
   width: 200px;
   border-radius: 5px;
-  overflow-y: auto;
   list-style: none;
   background-color: var(--red);
   color: white;
   cursor: pointer;
 }
 
-.portfolio ul * {
+.portfolio .sort .sort-select ul * {
   cursor: pointer;
 }
 
-.portfolio ul li {
-  padding: 10px 0;
+.portfolio .sort .sort-select ul li {
+  position: relative;
+  padding: 15px 0 15px 10px;
   border-bottom: 1px solid white;
 }
 
-.portfolio ul li input[type=radio] {
+.portfolio .sort .sort-select ul li:hover {
+  color: var(--light-pink);
+}
+
+.portfolio .sort .sort-select ul li .fa-chevron-down {
   display: none;
-}
-
-.portfolio ul .inactive {
-  display: none;
-}
-
-.portfolio ul .active {
-  display: block;
-  padding: 10px 0;
-}
-
-.portfolio ul .selected {
-  position: relative;
-  padding: 0;
-}
-
-.portfolio ul .selected.inactive {
-  display: block;
-  border-bottom: 0;
-  padding-bottom: 0;
-}
-
-.portfolio ul .selected.inactive ::after {
-  content: '\f078';
-  font-family: "Font Awesome 5 Pro";
   position: absolute;
   right: 10px;
-  padding: 0 0 0 20px;
 }
 
-.portfolio ul li:nth-child(1) {
-  position: relative;
-  padding-top: 0;
-}
-
-.portfolio ul li:nth-child(1).active ::after {
-  content: '\f077';
-  font-family: "Font Awesome 5 Pro";
+.portfolio .sort .sort-select ul li .fa-chevron-up {
+  display: none;
   position: absolute;
   right: 10px;
-  padding: 0 0 0 20px;
 }
 
-.portfolio ul li:nth-last-child(1) {
-  border-bottom: 0;
-  padding-bottom: 0;
-}
-
-.portfolio .sort {
+.portfolio .sort .sort-select ul li input[type=radio] {
   display: none;
+}
+
+.portfolio .sort .sort-select ul li label {
+  padding: 10px 50% 10px 0;
+}
+
+.portfolio .sort .sort-select ul li.active {
+  display: block;
+}
+
+.portfolio .sort .sort-select ul li.active:nth-child(1) .fa-chevron-up {
+  display: block;
+}
+
+.portfolio .sort .sort-select ul li.inactive {
+  display: none;
+}
+
+.portfolio .sort .sort-select ul li.inactive.selected {
+  display: block;
+  border-bottom: 0;
+}
+
+.portfolio .sort .sort-select ul li.inactive.selected .fa-chevron-down {
+  display: block;
+}
+
+.portfolio .sort .sort-select ul li:nth-last-child(1) {
+  border-bottom: 0;
 }
 
 .portfolio .portfolio-imgs {
@@ -371,7 +314,7 @@ button:hover, button:active {
           justify-content: flex-start;
   width: 660px;
   border-radius: 5px;
-  background-color: #DB8876;
+  background-color: var(--light-pink);
   padding: 35px;
   margin: auto;
   -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
