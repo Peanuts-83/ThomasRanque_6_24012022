@@ -1,4 +1,5 @@
-@import url("photographer.css");
+@import url("./photographer.css");
+@import url("./modal.css");
 
 body {
     --red: #901C1C;
@@ -29,11 +30,11 @@ header {
 }
 
 h1 {
-    font-size: 64px;
+    font-size: calc(24px + 2.5vw);
     font-weight: 400;
 }
 h2 {
-    font-size: 36px;
+    font-size: calc(12px + 1.5vw);
     font-weight: 400;
 }
 

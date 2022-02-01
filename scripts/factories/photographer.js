@@ -9,7 +9,7 @@ function photographerFactory(data, profile) {
         // ARTICLE HAUT + <a></a>
         const link = document.createElement('a');
         const divImg = document.createElement('div');
-        const h2 = document.createElement( 'h2' );
+        const h1 = document.createElement( 'h1' );
         link.href = `./photographer.html?${id}`;
 
         divImg.className = 'photo-profile';
@@ -19,9 +19,9 @@ function photographerFactory(data, profile) {
         const shadow = divImg.cloneNode(true);
         shadow.className = 'shadow';
 
-        h2.textContent = name;
+        h1.textContent = name;
         link.appendChild(divImg);
-        link.appendChild(h2);
+        link.appendChild(h1);
         // INSERT shadow as divImg::after
         divImg.after(shadow);
 
