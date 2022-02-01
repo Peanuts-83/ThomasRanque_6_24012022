@@ -6,10 +6,11 @@
 button {
     cursor: pointer;
     background-color: var(--red);
-    padding: 20px 40px;
+    padding: 20px;
     border: 0;
     border-radius: 5px;
     font-weight: bold;
+    font-size: 20px;
     color: white;
 
     &:hover, &:active {
@@ -56,10 +57,7 @@ button {
     }
 
     .contact_button {
-        font-size: 20px;
-        padding: 11px;
         margin: 100px 0;
-        width: 170px;
         height: 70px;
     }
 
@@ -112,9 +110,10 @@ button {
 
             ul {
                 position: absolute;
+                top: -5px;
                 z-index: 1;
-                padding: 0 10px;
-                margin: 5px 20px;
+                padding: 10px 10px;
+                margin: 0 20px;
                 width: 200px;
                 border-radius: 5px;
                 list-style: none;
@@ -259,7 +258,7 @@ button {
     padding: 15px;
 
     &:hover {
-        filter: brightness(0) saturate(100%) invert(40%) sepia(18%) saturate(2167%) hue-rotate(324deg) brightness(103%) contrast(91%);
+        filter: brightness(0) saturate(100%) invert(16%) sepia(47%) saturate(3671%) hue-rotate(343deg) brightness(97%) contrast(98%);
     }
 }
 
@@ -357,7 +356,7 @@ button {
             top: 0;
             right: 0;
             padding: 30px;
-
+            // change color to red-over
             &:hover {
                 filter: brightness(0) saturate(100%) invert(40%) sepia(18%) saturate(2167%) hue-rotate(324deg) brightness(103%) contrast(91%);
             }
