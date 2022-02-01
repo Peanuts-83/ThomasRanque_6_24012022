@@ -2,13 +2,15 @@
 // INITIALISATION PAGE //
 
 // GLOBALS //
-const contact = document.querySelector('.contact_button');
-const contactModal = document.querySelector('#contact_modal');
 let photographer, photos, profile;
 
 // DOM elements //
-const portfolioImgs = document.querySelector('.portfolio-imgs');
 const header = document.querySelector('.photograph-header');
+const contact = document.querySelector('.contact_button');
+const contactModal = document.querySelector('#contact_modal');
+const portfolioImgs = document.querySelector('.portfolio-imgs');
+const counter = document.querySelector('.counter');
+const [ rating, price ] = counter.children;
 
 // PARSE JSON
 function getPhotographers() {
@@ -56,7 +58,7 @@ function displayPhotos(name, photos) {
 // INIT
 async function init() {
   // Récupère les datas des photographes
-  const photographers = await getPhotographers();
+  photographers = await getPhotographers();
   // Récupère l'id de l'URL || SET default id si accès direct
   let idRequested = window.location.href.split('?')[1];
   if (!idRequested) {
@@ -64,7 +66,6 @@ async function init() {
   }
   // Récupère le photographe demandé
   [photographer] = await photographers.filter(photographer => photographer.id == idRequested);
-  console.log(idRequested)
   // Récupère le profil du photographe
   const profiles = await getProfiles();
   [profile] = profiles.filter(profile => profile.photographerId == idRequested);
@@ -76,6 +77,9 @@ async function init() {
   photos = photos.filter(photo => photo.photographerId == idRequested);
   // sortPhotos -> displayPhotos by default SORT (popularite)
   sortMedia();
+  // FEED COUNTER
+  rating.innerHTML = sumRatings();
+  price.innerHTML = `${photographer.price}€ / jour`
 };
 
 
@@ -93,10 +97,15 @@ const labels = sort.querySelectorAll('label');
 const [ arrow ] = [...labels].filter(label => label.control.checked);
 
 
+// SUM RATINGS
+function sumRatings() {
+  let totalLikes = photos.reduce((sum, photo) => sum += photo.likes, 0);
+  return `${totalLikes} <i class="fas fa-heart"></i>`;
+}
+
 
 // SORT PHOTOS
 sort.addEventListener('change', sortMedia);
-
 function sortMedia() {
   setOption();
   portfolioImgs.innerHTML = '';

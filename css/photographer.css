@@ -264,6 +264,20 @@ button:hover, button:active {
           transform: scale(1.2);
 }
 
+/* COUNTER */
+.counter {
+  position: fixed;
+  bottom: 0px;
+  right: 40px;
+  padding: 15px 10px;
+  border-radius: 5px 5px 0 0;
+  background-color: var(--light-pink);
+}
+
+.counter .counter-count {
+  margin: 0 20px;
+}
+
 /* MODALS */
 .bgtransp {
   display: none;

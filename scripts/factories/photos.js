@@ -56,6 +56,8 @@ function photosFactory(name, data) {
       imgDiv.style.background = `#ccc url(${media}) no-repeat`;
       imgDiv.style['background-size'] = 'cover';
       imgDiv.className = 'photo';
+      imgDiv.id = mediaType;
+      imgDiv.title = image;
     } else {
       // BUILD VIDEO
       videoDiv.src = media;
@@ -77,6 +79,8 @@ function photosFactory(name, data) {
         imgDiv.style.background = `#ccc url(${videoImage}) no-repeat`;
         imgDiv.style['background-size'] = 'cover';
         imgDiv.className = 'photo';
+        imgDiv.id = mediaType;
+        imgDiv.title = video;
       }
     }
 
@@ -99,9 +103,9 @@ function photosFactory(name, data) {
 
 
 // RATING INCREMENT
-// TODO: ratings memory ? //
 function ratingIncrement() {
   this.innerHTML = `${+this.innerText + 1} <i class="fas fa-heart"></i>`;
+  rating.innerHTML = `${+rating.innerText +1} <i class="fas fa-heart"></i>`;
 }
 
 // PHOTO MODAL CLOSE
