@@ -72,6 +72,7 @@
       label {
           color: #312E2E;
           font-size: 36px;
+          margin-top: 26px;
       }
 
       div {
@@ -79,7 +80,6 @@
           flex-direction: column;
           width: 100%;
           align-items: self-start;
-          margin-bottom: 26px;
       }
 
       .fieldText {
@@ -88,6 +88,16 @@
           border: none;
           border-radius: 5px;
           font-size: 30px;
+      }
+
+      .comment {
+          display: none;
+          align-items: flex-end;
+          color: var(--red);
+      }
+
+      .btn-submit {
+          margin: 20px 0;
       }
 
   }

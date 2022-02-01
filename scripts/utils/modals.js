@@ -17,7 +17,7 @@ function displayModal(name, mediaType) {
     if (name == 'photo_modal' && mediaType) {
         mediaType == 'video' ?
             (videoModal.style.display = 'block',
-            videoModal.controls = true)
+                videoModal.controls = true)
             :
             photoModal.style.display = 'block';
     } else if (name == 'contact_modal') {
@@ -58,10 +58,10 @@ function changeMedia(way) {
         // SET NEW MEDIA SRC & WIDTH
         mediaType == 'image' ?
             (photoModal.src = `./assets/photos/${firstname}/${newMedia[mediaType]}`,
-            photoModal.style.width = windowWidth - 395 + 'px')
+                photoModal.style.width = windowWidth - 395 + 'px')
             :
             (videoModal.src = `./assets/photos/${firstname}/${newMedia[mediaType]}`,
-            videoModal.style.width = windowWidth - 395 + 'px');
+                videoModal.style.width = windowWidth - 395 + 'px');
         h3Modal.innerText = newMedia.title;
         selectedMedia = newMedia[mediaType];
 
@@ -101,7 +101,7 @@ function readForm(event) {
     // GET form data & diplay
     let data = new FormData(contactForm);
     let contactObj = {};
-    for (const [name,value] of data) {
+    for (const [name, value] of data) {
         contactObj[name] = value;
     }
 
@@ -110,16 +110,68 @@ function readForm(event) {
         // VALIDATION OK
         console.table(contactObj);
         // CLEAR data & close
-        contactForm.querySelectorAll('.fieldText').forEach(elt => elt.value ='');
+        contactForm.querySelectorAll('.fieldText').forEach(elt => elt.value = '');
         closeModal(contactModal);
-    } else {
-
     }
-
-
 }
 
 // VALIDATE FORM // Return true|false
 function validateForm(data) {
-    
+    const [prenom, nom, email, message] = Object.values(data);
+    const validator = {}
+    for (let elt of [prenom, nom, email, message]) {
+        validator[elt] = false;
+    }
+
+    // NAME VALIDATION
+    // required: {string} && string.length >= 2
+    const regex1 = new RegExp('^[a-z]{2,}', 'i');
+
+    !regex1.test(prenom) ?
+        (setComment('prenom'), validator[prenom] = false)
+        :
+        (unsetComment('prenom'), validator[prenom] = true);
+
+    !regex1.test(nom) ?
+        (setComment('nom'), validator[nom] = false)
+        :
+        (unsetComment('nom'), validator[nom] = true);
+
+    // EMAIL VALIDATION
+    // required: {string} && 'mail@domain.xx'
+    const regex2 = new RegExp('[0-9a-z._%+-]+@[a-z0-9.-]+\\.[a-z]{2,64}', 'i');
+
+    !regex2.test(email) ?
+        (setComment('email'), validator[email] = false)
+        :
+        (unsetComment('email'), validator[email] = true)
+
+    // MESSAGE VALIDATION
+    // required: {string} && string.length >= 2
+    const regex3 = new RegExp('.{2,}', 'i');
+
+    !regex3.test(message) ?
+        (setComment('message'), validator[message] = false)
+        :
+        (unsetComment('message'), validator[message] = true)
+
+
+    // ERROR MESSAGES
+    function setComment(target) {
+        const comment = document.querySelector(`.comment[id=${target}]`);
+        comment.style.display = 'flex';
+    }
+
+    function unsetComment(target) {
+        const comment = document.querySelector(`.comment[id=${target}]`);
+        comment.style.display = 'none';
+    }
+
+
+    // FINAL VALIDATION
+    if (Object.values(validator).every(val => val == true)) {
+        return true;
+    } else {
+        return false;
+    }
 }

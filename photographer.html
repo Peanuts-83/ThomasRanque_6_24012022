@@ -40,14 +40,18 @@
         <div>
           <label for="#prenom">Prénom</label>
           <input class="fieldText" type="text" id="prenom" name="prenom" />
+          <div class="comment" id="prenom">Veuillez saisir au minimum 2 caractères</div>
           <label for="#nom">Nom</label>
           <input class="fieldText" type="text" id="nom" name="nom" />
+          <div class="comment" id="nom">Veuillez saisir au minimum 2 caractères</div>
           <label for="#email">Email</label>
           <input class="fieldText" type="email" id="email" name="email" />
+          <div class="comment" id="email">Veuillez saisir un email valide</div>
           <label for="#message">Message</label>
           <textarea class="fieldText" type="text" rows="4" id="message" name="message"></textarea>
+          <div class="comment" id="message">Votre message doit être composé d'au moins 2 caractères</div>
         </div>
-        <button type="submit" >Envoyer</button>
+        <button class="button btn-submit" type="submit" >Envoyer</button>
       </form>
     </div>
   </div>
