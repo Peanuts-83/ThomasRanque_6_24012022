@@ -35,15 +35,13 @@ function photosFactory(name, data) {
     imgDiv.onclick = () => {
       const windowWidth = window.innerWidth;
       // Top position near top window position
-      modalMedia.style.top = window.scrollY + 30 + 'px';
+      modalMedia.style.top = window.scrollY + 90 + 'px';
       clearMedia();
       // Choose media to display
       if (mediaType == 'image') {
         photoModal.src = media;
-        photoModal.style.width = windowWidth - 395 + 'px';
       } else if (mediaType == 'video') {
         videoModal.src = media;
-        videoModal.style.width = windowWidth - 395 + 'px';
       }
       h3Modal.innerText = title;
       selectedMedia = image ? image : video;

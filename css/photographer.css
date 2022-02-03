@@ -1,9 +1,3 @@
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  /*border: 1px dashed red;*/
-}
-
 button {
   cursor: pointer;
   background-color: var(--red);
@@ -63,45 +57,23 @@ button:hover, button:active {
 
 .photograph-header .info address {
   font-style: normal;
-  font-size: 31px;
+  font-size: 28px;
   color: var(--red);
-  margin: -10px 0;
 }
 
 .photograph-header .info blockquote {
-  font-size: 23px;
+  font-size: 18px;
   color: var(--medium-grey);
   margin-left: 0;
 }
 
 .photograph-header .contact_button {
-  margin: 100px 0;
+  margin: 100% 0;
   height: 70px;
 }
 
 .photograph-header .profile {
   position: relative;
-}
-
-.photograph-header .photo-profile {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  -webkit-mask: url("#svgmask");
-          mask: url("#svgmask");
-}
-
-.photograph-header .shadow {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-blend-mode: multiply;
-  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
-          mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
-  -webkit-transform: scaleX(95%);
-          transform: scaleX(95%);
-  position: absolute;
-  top: 0;
 }
 
 /* SECTION PORTFOLIO */
@@ -221,7 +193,6 @@ button:hover, button:active {
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
-  font-size: 1.2vw;
 }
 
 .portfolio .portfolio-imgs article .photo {
@@ -243,10 +214,6 @@ button:hover, button:active {
   top: 0;
   right: 0;
   margin: 10px;
-}
-
-.portfolio .portfolio-imgs article h3 {
-  color: var(--red);
 }
 
 .portfolio .portfolio-imgs article .rating {
@@ -276,5 +243,139 @@ button:hover, button:active {
 
 .counter .counter-count {
   margin: 0 20px;
+}
+
+@media screen and (max-width: 992px) {
+  .photograph-header .info {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    margin-left: 5%;
+    height: auto;
+  }
+  .photograph-header .info h1 {
+    margin-bottom: 10px;
+  }
+  .photograph-header .info address {
+    font-size: 24px;
+  }
+  .photograph-header .info blockquote {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .photograph-header .contact_button {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    margin: 0;
+    margin-left: 5%;
+  }
+  .sort {
+    font-size: 18px;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .portfolio {
+    margin: 60px;
+  }
+  .portfolio .portfolio-imgs {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    margin: 50px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .photograph-header {
+    height: auto;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 20px 0;
+    margin: 0 40px;
+  }
+  .photograph-header .info {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    margin-left: 0;
+    height: auto;
+  }
+  .photograph-header .info h1 {
+    margin-bottom: 10px;
+  }
+  .photograph-header .info address {
+    font-size: 24px;
+  }
+  .photograph-header .info blockquote {
+    font-size: 16px;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  .photograph-header .contact_button {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    margin: 0;
+  }
+  .sort {
+    position: relative;
+    top: -50px;
+    font-size: 14px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 30px;
+  }
+  .sort strong {
+    position: relative;
+    top: -10px;
+  }
+  .sort .sort-select {
+    left: -20px;
+  }
+  .portfolio {
+    margin: 40px;
+  }
+  .portfolio .portfolio-imgs {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    gap: 70px;
+    margin: 50px 0;
+  }
+  .portfolio .portfolio-imgs h3, .portfolio .portfolio-imgs .rating {
+    font-size: 15px;
+  }
+  .counter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100vw;
+    padding: 5px 10px;
+    border-radius: 0;
+  }
+  .counter .counter-count {
+    font-size: 15px;
+  }
 }
 /*# sourceMappingURL=photographer.css.map */

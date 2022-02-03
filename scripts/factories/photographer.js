@@ -23,7 +23,7 @@ function photographerFactory(data, profile) {
         link.appendChild(divImg);
         link.appendChild(h1);
         // INSERT shadow as divImg::after
-        divImg.after(shadow);
+        divImg.before(shadow);
 
         // ARTICLE BAS
         const address = document.createElement('address');

@@ -57,11 +57,9 @@ function changeMedia(way) {
 
         // SET NEW MEDIA SRC & WIDTH
         mediaType == 'image' ?
-            (photoModal.src = `./assets/photos/${firstname}/${newMedia[mediaType]}`,
-                photoModal.style.width = windowWidth - 395 + 'px')
+            photoModal.src = `./assets/photos/${firstname}/${newMedia[mediaType]}`
             :
-            (videoModal.src = `./assets/photos/${firstname}/${newMedia[mediaType]}`,
-                videoModal.style.width = windowWidth - 395 + 'px');
+            videoModal.src = `./assets/photos/${firstname}/${newMedia[mediaType]}`;
         h3Modal.innerText = newMedia.title;
         selectedMedia = newMedia[mediaType];
 

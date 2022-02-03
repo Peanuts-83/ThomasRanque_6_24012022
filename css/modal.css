@@ -27,10 +27,6 @@
   z-index: 2;
 }
 
-#contact_modal * {
-  /*border: 1px dashed red;*/
-}
-
 #contact_modal .modal {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -142,14 +138,19 @@
   position: absolute;
   left: 100px;
   z-index: 2;
+  width: 50%;
 }
 
 #photo_modal .modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-preferred-size: content;
+      flex-basis: content;
   position: relative;
   background-color: white;
   -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
           box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
-  width: 100%;
   padding: 20px 0;
   border-radius: 5px;
 }
@@ -186,21 +187,110 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 30px;
-  font-size: 50px;
   color: var(--red);
   height: 100%;
   cursor: pointer;
+  font-size: 50px;
 }
 
 #photo_modal .modal nav .previous:hover, #photo_modal .modal nav .next:hover {
   color: var(--red-hover);
 }
 
+#photo_modal .modal nav .photo-details * {
+  width: 100%;
+}
+
 #photo_modal .modal .photo {
   border-radius: 5px;
 }
 
-#photo_modal h3 {
-  color: var(--red);
+@media screen and (max-width: 1600px) {
+  #photo_modal {
+    left: 100px;
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #photo_modal {
+    left: 0;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #photo_modal {
+    left: 0;
+    width: 100%;
+  }
+  #photo_modal .modal {
+    padding: 30px 0;
+  }
+  #photo_modal .modal .close {
+    z-index: 3;
+    top: -15px;
+    right: 0;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    padding: 10px;
+  }
+  #photo_modal .modal nav {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+  }
+  #photo_modal .modal nav .previous {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 30px;
+    height: 100%;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.5);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  }
+  #photo_modal .modal nav .previous:hover, #photo_modal .modal nav .previous:active {
+    color: white;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  }
+  #photo_modal .modal nav .next {
+    position: absolute;
+    right: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 30px;
+    color: var(--red);
+    height: 100%;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.5);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  }
+  #photo_modal .modal nav .next:hover, #photo_modal .modal nav .next:active {
+    color: white;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  }
+  #photo_modal .modal nav .photo {
+    border-radius: 0;
+  }
+  #photo_modal .modal h3 {
+    font-size: 15px;
+    margin-left: 10px;
+  }
 }
 /*# sourceMappingURL=modal.css.map */

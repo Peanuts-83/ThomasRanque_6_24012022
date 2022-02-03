@@ -19,16 +19,12 @@
   }
 }
 
-// TODO: resize modals on window.resize
+
 /* CONTACT MODAL */
 #contact_modal {
   display: none;
   position: absolute;
   z-index: 2;
-
-  * {
-      /*border: 1px dashed red;*/
-  }
 
   .modal {
       display: flex;
@@ -109,12 +105,14 @@
   position: absolute;
   left: 100px;
   z-index: 2;
+  width: 50%;
 
   .modal {
+      display: flex;
+      flex-basis: content;
       position: relative;
       background-color: white;
       box-shadow: 3px 3px 5px rgba(0,0,0,.4);
-      width: 100%;
       padding: 20px 0;
       border-radius: 5px;
 
@@ -140,12 +138,19 @@
               display: flex;
               align-items: center;
               padding: 30px;
-              font-size: 50px;
               color: var(--red);
               height: 100%;
               cursor: pointer;
+              font-size: 50px;
+
               &:hover {
                   color: var(--red-hover);
+              }
+          }
+
+          .photo-details {
+              * {
+                  width: 100%;
               }
           }
       }
@@ -155,7 +160,93 @@
       }
   }
 
-  h3 {
-      color: var(--red);
-  }
+}
+
+// MEDIUM Desktop
+@media screen and (max-width: 1600px) {
+    #photo_modal {
+        left: 100px;
+        width: 70%;
+    }
+}
+
+// TABLET
+@media screen and (max-width: 992px) {
+    #photo_modal {
+        left: 0;
+        width: 100%;
+    }
+}
+
+// MOBIL
+@media screen and (max-width: 768px) {
+    #photo_modal {
+        left: 0;
+        width: 100%;
+
+        .modal {
+            padding: 30px 0;
+
+            .close {
+                z-index: 3;
+                top: -15px;
+                right: 0;
+                transform: scale(.5);
+                padding: 10px;
+            }
+
+            nav {
+                position: relative;
+                display: flex;
+                height: 100%;
+                align-items: stretch;
+
+                .previous {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    display: flex;
+                    align-items: center;
+                    padding: 30px;
+                    height: 100%;
+                    cursor: pointer;
+
+                    color: rgba($color: white, $alpha: .5);
+                    text-shadow: 3px 3px 5px rgba(0,0,0,.3);
+                    &:hover, &:active {
+                        color: rgba($color: white, $alpha: 1);
+                        text-shadow: 3px 3px 5px rgba(0,0,0,.5);
+                    }
+
+                }
+
+                .next {
+                    position: absolute;
+                    right: 0;
+                    display: flex;
+                    align-items: center;
+                    padding: 30px;
+                    color: var(--red);
+                    height: 100%;
+                    cursor: pointer;
+
+                    color: rgba($color: white, $alpha: .5);
+                    text-shadow: 3px 3px 5px rgba(0,0,0,.3);
+                    &:hover, &:active {
+                        color: rgba($color: white, $alpha: 1);
+                        text-shadow: 3px 3px 5px rgba(0,0,0,.5);
+                    }
+                }
+
+                .photo {
+                    border-radius: 0;
+                }
+            }
+
+            h3 {
+                font-size: 15px;
+                margin-left: 10px;
+            }
+        }
+    }
 }

@@ -1,6 +1,15 @@
 @import url("./photographer.css");
 @import url("./modal.css");
 body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 1440px;
+  margin: 0 auto;
   --red: #901C1C;
   --red-hover: #D3573C;
   --light-pink: #DB8876;
@@ -12,8 +21,26 @@ body {
   color: black;
 }
 
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 a {
   text-decoration: none;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3, .rating {
+  font-size: 20px;
+  color: var(--red);
 }
 
 header {
@@ -32,16 +59,6 @@ header {
 
 header h2 {
   color: var(--red);
-}
-
-h1 {
-  font-size: calc(24px + 2.5vw);
-  font-weight: 400;
-}
-
-h2 {
-  font-size: calc(12px + 1.5vw);
-  font-weight: 400;
 }
 
 .logo {
@@ -93,29 +110,7 @@ h2 {
   position: relative;
 }
 
-.photographer_section article .photo-profile {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  -webkit-mask: url("#svgmask");
-          mask: url("#svgmask");
-}
-
-.photographer_section article .shadow {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  z-index: -1;
-  background-blend-mode: multiply;
-  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
-          mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
-  -webkit-transform: scaleX(95%);
-          transform: scaleX(95%);
-  position: absolute;
-  top: 0;
-}
-
-.photographer_section article h2 {
+.photographer_section article h1 {
   color: var(--red-hover);
 }
 
@@ -133,5 +128,65 @@ h2 {
 .photographer_section article data {
   color: var(--medium-grey);
   font-size: 12px;
+}
+
+.photo-profile {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  -webkit-mask: url("#svgmask");
+          mask: url("#svgmask");
+}
+
+.shadow {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 5px;
+  background-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
+          mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
+  -webkit-transform: scaleX(95%);
+          transform: scaleX(95%);
+  position: absolute;
+  top: 0;
+}
+
+@media screen and (max-width: 992px) {
+  h1 {
+    font-size: 36px;
+  }
+  h2 {
+    font-size: 28px;
+  }
+  .photographer_section {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 70px 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 20px;
+  }
+  header h2 {
+    white-space: nowrap;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  .photographer_section {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
 }
 /*# sourceMappingURL=style.css.map */

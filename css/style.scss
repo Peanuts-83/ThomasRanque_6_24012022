@@ -2,6 +2,10 @@
 @import url("./modal.css");
 
 body {
+    display: flex;
+    flex-direction: column;
+    max-width: 1440px;
+    margin: 0 auto;
     --red: #901C1C;
     --red-hover: #D3573C;
     --light-pink: #DB8876;
@@ -13,10 +17,24 @@ body {
     color: black;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 a {
     text-decoration: none;
 }
 
+h1 {
+    font-size: 40px;
+}
+h2 {
+    font-size: 32px;
+}
+h3, .rating {
+    font-size: 20px;
+    color: var(--red);
+}
 
 header {
     display: flex;
@@ -27,15 +45,6 @@ header {
     h2 {
         color: var(--red);
     }
-}
-
-h1 {
-    font-size: calc(24px + 2.5vw);
-    font-weight: 400;
-}
-h2 {
-    font-size: calc(12px + 1.5vw);
-    font-weight: 400;
 }
 
 .logo {
@@ -65,24 +74,8 @@ h2 {
         align-items: center;
         position: relative;
     }
-    .photo-profile {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        mask: url("#svgmask");
-    }
-    .shadow {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        z-index: -1;
-        background-blend-mode:multiply;
-        mask-image:  radial-gradient(circle, rgba(0,0,0,.7) 50%, transparent 70%);
-        transform: scaleX(95%);
-        position: absolute;
-        top: 0;
-    }
-    h2 {
+
+    h1 {
         color: var(--red-hover);
     }
     address {
@@ -97,5 +90,59 @@ h2 {
     data {
         color: var(--medium-grey);
         font-size: 12px;
+    }
+}
+
+.photo-profile {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    mask: url("#svgmask");
+}
+
+.shadow {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: 5px;
+    background-blend-mode:multiply;
+    mask-image:  radial-gradient(circle, rgba(0,0,0,.7) 50%, transparent 70%);
+    transform: scaleX(95%);
+    position: absolute;
+    top: 0;
+}
+
+// TABLET
+@media screen and (max-width:992px) {
+    h1 {
+        font-size: 36px;
+    }
+    h2 {
+        font-size: 28px;
+    }
+    .photographer_section {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin: 70px 40px;
+    }
+}
+
+// MOBIL
+@media screen and (max-width:768px) {
+    header {
+        flex-direction: column;
+        margin-top: 20px;
+        h2 {
+            white-space: nowrap;
+        }
+    }
+    h1 {
+        font-size: 28px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    .photographer_section {
+        grid-template-columns: 1fr;
     }
 }
