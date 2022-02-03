@@ -80,6 +80,11 @@ button {
             position: relative;
             width: 250px;
 
+            fieldset {
+                border: 0;
+                padding: 0;
+            }
+
             ul {
                 position: absolute;
                 top: -5px;

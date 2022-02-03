@@ -156,12 +156,12 @@ function validateForm(data) {
 
     // ERROR MESSAGES
     function setComment(target) {
-        const comment = document.querySelector(`.comment[id=${target}]`);
+        const comment = document.querySelector(`.comment[id=${target}-comment]`);
         comment.style.display = 'flex';
     }
 
     function unsetComment(target) {
-        const comment = document.querySelector(`.comment[id=${target}]`);
+        const comment = document.querySelector(`.comment[id=${target}-comment]`);
         comment.style.display = 'none';
     }
 

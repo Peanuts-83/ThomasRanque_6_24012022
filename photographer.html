@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="fr">
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
   <link href="./css/normalize.css" rel="stylesheet" type="text/css" />
   <link href="./css/style.css" rel="stylesheet" type="text/css" />
-  <meta charset="utf-8">
-  <title>Fisheye - photographe </title>
+  <title>Fisheye - photographer page </title>
 </head>
 
 <body>
 
   <header>
-    <a href="./index.html"><img src="./assets/images/logo.png" class="logo" /></a>
+    <a href="./index.html"><img src="./assets/images/logo.png" class="logo" alt="logo" /></a>
   </header>
 
   <main id="main">
@@ -33,24 +35,24 @@
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="./assets/icons/close.svg" class="close" />
+        <img src="./assets/icons/close.svg" class="close" alt="close button"/>
       </header>
       <form id="contact_form">
         <div>
-          <label for="#prenom">Prénom</label>
-          <input class="fieldText" type="text" id="prenom" name="prenom" />
-          <div class="comment" id="prenom">Veuillez saisir au minimum 2 caractères</div>
-          <label for="#nom">Nom</label>
-          <input class="fieldText" type="text" id="nom" name="nom" />
-          <div class="comment" id="nom">Veuillez saisir au minimum 2 caractères</div>
-          <label for="#email">Email</label>
-          <input class="fieldText" type="email" id="email" name="email" />
-          <div class="comment" id="email">Veuillez saisir un email valide</div>
-          <label for="#message">Message</label>
-          <textarea class="fieldText" type="text" rows="4" id="message" name="message"></textarea>
-          <div class="comment" id="message">Votre message doit être composé d'au moins 2 caractères</div>
+          <label for="prenom">Prénom</label>
+          <input class="fieldText" type="text" id="prenom" name="prenom" title="prenom" />
+          <div class="comment" id="prenom-comment">Veuillez saisir au minimum 2 caractères</div>
+          <label for="nom">Nom</label>
+          <input class="fieldText" type="text" id="nom" name="nom" title="nom" />
+          <div class="comment" id="nom-comment">Veuillez saisir au minimum 2 caractères</div>
+          <label for="email">Email</label>
+          <input class="fieldText" type="email" id="email" name="email" title="email" />
+          <div class="comment" id="email-comment">Veuillez saisir un email valide</div>
+          <label for="message">Message</label>
+          <textarea class="fieldText" type="text" rows="4" id="message" name="message" title="message" ></textarea>
+          <div class="comment" id="message-comment">Votre message doit être composé d'au moins 2 caractères</div>
         </div>
-        <button class="button btn-submit" type="submit" >Envoyer</button>
+        <button class="button btn-submit" type="submit">Envoyer</button>
       </form>
     </div>
   </div>
@@ -62,26 +64,28 @@
       <strong>Trier par</strong>
       <div class="sort-select">
         <form class="sort-by" target="popularite">
-          <ul>
-            <li class="selected inactive">
-              <i class="fas fa-chevron-up"></i>
-              <i class="fas fa-chevron-down"></i>
-              <input type="radio" id="option1" name="sort-option" title="popularite" checked>
-              <label for="option1">Popularité</label>
-            </li>
-            <li class="inactive">
-              <i class="fas fa-chevron-up"></i>
-              <i class="fas fa-chevron-down"></i>
-              <input type="radio" id="option2" name="sort-option" title="date">
-              <label for="option2">Date</label>
-            </li>
-            <li class="inactive">
-              <i class="fas fa-chevron-up"></i>
-              <i class="fas fa-chevron-down"></i>
-              <input type="radio" id="option3" name="sort-option" title="titre">
-              <label for="option3">Titre</label>
-            </li>
-          </ul>
+          <fieldset>
+            <ul>
+              <li class="selected inactive">
+                <i class="fas fa-chevron-up"></i>
+                <i class="fas fa-chevron-down"></i>
+                <input type="radio" id="option1" name="sort-option" title="popularite" checked>
+                <label for="option1">Popularité</label>
+              </li>
+              <li class="inactive">
+                <i class="fas fa-chevron-up"></i>
+                <i class="fas fa-chevron-down"></i>
+                <input type="radio" id="option2" name="sort-option" title="date">
+                <label for="option2">Date</label>
+              </li>
+              <li class="inactive">
+                <i class="fas fa-chevron-up"></i>
+                <i class="fas fa-chevron-down"></i>
+                <input type="radio" id="option3" name="sort-option" title="titre">
+                <label for="option3">Titre</label>
+              </li>
+            </ul>
+          </fieldset>
         </form>
       </div>
     </div>
@@ -97,7 +101,7 @@
 
   <div id="photo_modal">
     <div class="modal">
-      <img src="./assets/icons/close.svg" class="close" />
+      <img src="./assets/icons/close.svg" class="close" alt="close button"/>
       <nav>
         <div class="previous"><i class="fas fa-chevron-left"></i></div>
         <div class="photo-details">
