@@ -44,6 +44,7 @@ function photosFactory(name, data) {
       } else if (mediaType == 'video') {
         videoModal.src = media;
         videoModal.setAttribute('alt', `${title}-XL`);
+        videoModal.setAttribute('type', 'video/mp4');
       }
       h3Modal.innerText = title;
       selectedMedia = image ? image : video;
