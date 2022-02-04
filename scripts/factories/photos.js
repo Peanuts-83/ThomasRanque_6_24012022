@@ -40,8 +40,10 @@ function photosFactory(name, data) {
       // Choose media to display
       if (mediaType == 'image') {
         photoModal.src = media;
+        photoModal.setAttribute('alt', `${title}-XL`);
       } else if (mediaType == 'video') {
         videoModal.src = media;
+        videoModal.setAttribute('alt', `${title}-XL`);
       }
       h3Modal.innerText = title;
       selectedMedia = image ? image : video;
@@ -81,6 +83,7 @@ function photosFactory(name, data) {
         imgDiv.title = video;
       }
     }
+    imgDiv.setAttribute('alt', title);
 
     // MAKE TITLE + RATING
     h3.innerText = title;
@@ -102,8 +105,7 @@ function photosFactory(name, data) {
 
 // RATING INCREMENT
 function ratingIncrement() {
-  this.innerHTML = `${+this.innerText + 1} <i class="fas fa-heart"></i>`;
-  rating.innerHTML = `${+rating.innerText +1} <i class="fas fa-heart"></i>`;
+  rating.innerHTML = `${+rating.innerText + 1} <i class="fas fa-heart"></i>`;
 }
 
 // PHOTO MODAL CLOSE

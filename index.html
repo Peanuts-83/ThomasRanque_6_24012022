@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- FONTS & ICONS -->
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- CSS -->
+  <link href="css/normalize.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <title>Fisheye</title>
+</head>
 
+<body>
+  <header>
+    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="logo" /></a>
+    <h2>Nos photographes</h2>
+  </header>
 
-    <link href="css/normalize.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <title>Fisheye</title>
-  </head>
-  <body>
-    <header>
-        <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="logo" /></a>
-        <h2>Nos photographes</h2>
-    </header>
-
-    <main id="main">
-        <section class="photographer_section"></section>
-    </main>
+  <main id="main">
+    <section class="photographer_section"></section>
+  </main>
 
   <!-- CIRCLE MASK for .photo-profile -->
-    <svg width='200' height='200'>
-      <mask id="svgmask">
-        <circle fill="#ffffff" cx="100" cy="100" r="90"></circle>
-      </mask>
-    </svg>
+  <svg width='200' height='200'>
+    <mask id="svgmask">
+      <circle fill="#ffffff" cx="100" cy="100" r="90"></circle>
+    </mask>
+  </svg>
 
-    <script src="./scripts/factories/photographer.js"></script>
-    <script src="./scripts/pages/index.js"></script>
-  </body>
+  <script src="./scripts/factories/photographer.js"></script>
+  <script src="./scripts/pages/index.js"></script>
+</body>
+
 </html>

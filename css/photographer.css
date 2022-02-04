@@ -31,6 +31,7 @@ button:hover, button:active {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  border-radius: 5px;
   background-color: var(--grey);
   height: 300px;
   margin: 0 100px;

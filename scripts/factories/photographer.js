@@ -15,6 +15,7 @@ function photographerFactory(data, profile) {
         divImg.className = 'photo-profile';
         divImg.style.background = `#FAFAFA url(${picture}) no-repeat`;
         divImg.style["background-size"] = 'cover';
+        divImg.setAttribute('alt', name); // WCAG: accessibility
         // CLONE divImg
         const shadow = divImg.cloneNode(true);
         shadow.className = 'shadow';
@@ -29,9 +30,10 @@ function photographerFactory(data, profile) {
         const address = document.createElement('address');
         const blockquote = document.createElement('blockquote');
         const data = document.createElement('data');
-        address.innerText = `${city}, ${country}`;
-        blockquote.innerText = `${tagline}`;
+        address.innerText = `${city}, ${country}`; // WCAG
+        blockquote.innerText = `${tagline}`; // WCAG
         data.innerText = `${price}€/jour`;
+        data.value = price; // WCAG
 
         // ASSEMBLAGE ARTICLE
         const elements = [link, address, blockquote, data];
@@ -52,11 +54,12 @@ function photographerFactory(data, profile) {
         const img = document.createElement('div');
 
         h1.innerText = name;
-        address.innerText = `${city}, ${country}`;
-        blockquote.innerText = `${tagline}`;
+        address.innerText = `${city}, ${country}`; // WCAG
+        blockquote.innerText = `${tagline}`; // WCAG
         img.className = 'photo-profile';
         img.style.background = `#FAFAFA url(${picture}) no-repeat`;
         img.style["background-size"] = 'cover';
+        img.setAttribute('alt', name); // WCAG
         // CLONE divImg
         const shadow = img.cloneNode(true);
         shadow.className = 'shadow';
