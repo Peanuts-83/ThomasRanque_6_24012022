@@ -1,9 +1,26 @@
+
+
 ////////////
 // MODALS //
 function initModals() {
     contact.onclick = () => { displayModal('contact_modal') };
     previous.onclick = () => { changeMedia('prev') };
     next.onclick = () => { changeMedia('next') };
+    document.onkeydown = (e) => {
+        switch (e.key) {
+            case 'ArrowLeft':
+                changeMedia('prev');
+                break;
+            case 'ArrowRight':
+                changeMedia('next');
+                break;
+            case 'Escape':
+                document.querySelectorAll('.modal').forEach(modal => {
+                        closeModal(modal.parentElement);
+                });
+                break;
+        }
+    };
     document.querySelectorAll('.modal').forEach(modal => {
         const parent = modal.parentElement;
         const close = modal.querySelector('.close');
@@ -53,7 +70,6 @@ function changeMedia(way) {
     function operate(newMedia) {
         clearMedia();
         const mediaType = newMedia.image ? 'image' : 'video';
-        const windowWidth = window.innerWidth;
 
         // SET NEW MEDIA SRC & WIDTH
         mediaType == 'image' ?
