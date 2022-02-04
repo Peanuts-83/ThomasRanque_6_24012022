@@ -146,8 +146,8 @@ header h2 {
   background-blend-mode: multiply;
   -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
           mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
-  -webkit-transform: scaleX(95%);
-          transform: scaleX(95%);
+  -webkit-transform: scaleX(0.95);
+          transform: scaleX(0.95);
   position: absolute;
   top: 0;
 }
