@@ -13,6 +13,7 @@ function photographerFactory(data, profile) {
         link.href = `./photographer.html?${id}`;
 
         divImg.className = 'photo-profile';
+        divImg.ariaLabel = `vignette de ${name}`;
         divImg.style.background = `#FAFAFA url(${picture}) no-repeat`;
         divImg.style["background-size"] = 'cover';
         divImg.setAttribute('alt', name); // WCAG: accessibility
@@ -47,6 +48,7 @@ function photographerFactory(data, profile) {
         divText.className = 'info';
         const divImg = document.createElement('div');
         divImg.className = 'profile';
+        divImg.ariaLabel = `vignette de ${name}`;
 
         const h1 = document.createElement('h1');
         const address = document.createElement('address');

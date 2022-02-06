@@ -23,36 +23,36 @@
   </header>
 
   <main id="main">
-    <div class="photograph-header">
+    <div class="photograph-header" aria-label="infos du photographe">
       <button class="contact_button">Contactez-moi</button>
     </div>
   </main>
 
 
-  <div class="bgtransp">
+  <div class="bgtransp" aria-label="arrière plan transparent de modale">
   </div>
 
 
-  <div id="contact_modal">
+  <div id="contact_modal" aria-label="modale de contact">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="./assets/icons/close.svg" class="close" alt="close button"/>
+        <img src="./assets/icons/close.svg" class="close" alt="close button" aria-label="bouton fermer"/>
       </header>
-      <form id="contact_form">
+      <form id="contact_form" aria-label="formulaire de contact">
         <div>
           <label for="prenom">Prénom</label>
           <input class="fieldText" type="text" id="prenom" name="prenom" title="prenom" />
-          <div class="comment" id="prenom-comment">Veuillez saisir au minimum 2 caractères</div>
+          <div class="comment" id="prenom-comment" aria-label="Explication de complétion">Veuillez saisir au minimum 2 caractères</div>
           <label for="nom">Nom</label>
           <input class="fieldText" type="text" id="nom" name="nom" title="nom" />
-          <div class="comment" id="nom-comment">Veuillez saisir au minimum 2 caractères</div>
+          <div class="comment" id="nom-comment"  aria-label="Explication de complétion">Veuillez saisir au minimum 2 caractères</div>
           <label for="email">Email</label>
           <input class="fieldText" type="email" id="email" name="email" title="email" />
-          <div class="comment" id="email-comment">Veuillez saisir un email valide</div>
+          <div class="comment" id="email-comment" aria-label="Explication de complétion">Veuillez saisir un email valide</div>
           <label for="message">Message</label>
           <textarea class="fieldText" rows="4" id="message" name="message" title="message" ></textarea>
-          <div class="comment" id="message-comment">Votre message doit être composé d'au moins 2 caractères</div>
+          <div class="comment" id="message-comment" aria-label="Explication de complétion">Votre message doit être composé d'au moins 2 caractères</div>
         </div>
         <button class="button btn-submit" type="submit">Envoyer</button>
       </form>
@@ -62,7 +62,7 @@
 
   <section class="portfolio">
     <!-- SELECT MENU SORT -->
-    <div class="sort">
+    <div class="sort" aria-label="sélecteur de tri des photos">
       <strong>Trier par</strong>
       <div class="sort-select">
         <form class="sort-by" target="popularite">
@@ -91,34 +91,34 @@
         </form>
       </div>
     </div>
-    <div class="portfolio-imgs">
+    <div class="portfolio-imgs" aria-label="portfolio">
     </div>
     <!-- COUNTER -->
-    <div class="counter">
+    <div class="counter" aria-label="compteur de likes & tarif">
       <span class="counter-count" id="rating">ratings</span>
       <span class="counter-count" id="price">price</span>
     </div>
   </section>
 
 
-  <div id="photo_modal">
+  <div id="photo_modal" aria-label="modale de média">
     <div class="modal">
       <img src="./assets/icons/close.svg" class="close" alt="close button"/>
       <nav>
-        <div class="previous"><i class="fas fa-chevron-left"></i></div>
-        <div class="photo-details">
-          <img src="#" alt="#" class="photo">
-          <video class="video"></video>
+        <div class="previous" aria-label="média précédent"><i class="fas fa-chevron-left"></i></div>
+        <div class="photo-details" aria-label="média grande taille">
+          <img src="#" alt="#" class="photo" aria-label="grande photo">
+          <video class="video" aria-label="grande vidéo"></video>
           <h3></h3>
         </div>
-        <div class="next"><i class="fas fa-chevron-right"></i></div>
+        <div class="next" aria-label="média suivant"><i class="fas fa-chevron-right"></i></div>
       </nav>
     </div>
   </div>
 
   <!-- CIRCLE MASK for .photo-profile -->
   <svg width='200' height='200'>
-    <mask id="svgmask">
+    <mask id="svgmask" aria-label="masque de vignette">
       <circle fill="#ffffff" cx="100" cy="100" r="90"></circle>
     </mask>
   </svg>

@@ -85,11 +85,13 @@ function photosFactory(name, data) {
       }
     }
     imgDiv.setAttribute('alt', title);
+    imgDiv.ariaLabel = title;
 
     // MAKE TITLE + RATING
     h3.innerText = title;
     rating.innerHTML = `${likes} <i class="fas fa-heart"></i>`;
     rating.className = 'rating';
+    rating.ariaLabel = 'nombre de likes';
     rating.addEventListener('click', ratingIncrement);
 
     // BUILD ARTICLE
