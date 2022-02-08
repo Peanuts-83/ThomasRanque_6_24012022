@@ -6,21 +6,7 @@ function initModals() {
     contact.onclick = () => { displayModal('contact_modal') };
     previous.onclick = () => { changeMedia('prev') };
     next.onclick = () => { changeMedia('next') };
-    document.onkeydown = (e) => {
-        switch (e.key) {
-            case 'ArrowLeft':
-                changeMedia('prev');
-                break;
-            case 'ArrowRight':
-                changeMedia('next');
-                break;
-            case 'Escape':
-                document.querySelectorAll('.modal').forEach(modal => {
-                        closeModal(modal.parentElement);
-                });
-                break;
-        }
-    };
+    
     document.querySelectorAll('.modal').forEach(modal => {
         const parent = modal.parentElement;
         const close = modal.querySelector('.close');

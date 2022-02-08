@@ -29,27 +29,19 @@ function photosFactory(name, data) {
     const videoDiv = document.createElement('video');
     const canvas = document.createElement('canvas');
     const h3 = document.createElement('h3');
-    const rating = document.createElement('span');
+    const articleRating = document.createElement('span');
 
     // ADDEVENTLISTENER ON IMG
-    imgDiv.onclick = () => {
-      const windowWidth = window.innerWidth;
-      // Top position near top window position
-      modalMedia.style.top = window.scrollY + 90 + 'px';
-      clearMedia();
-      // Choose media to display
-      if (mediaType == 'image') {
-        photoModal.src = media;
-        photoModal.setAttribute('alt', `${title}-XL`);
-      } else if (mediaType == 'video') {
-        videoModal.src = media;
-        videoModal.setAttribute('alt', `${title}-XL`);
-        videoModal.setAttribute('type', 'video/mp4');
-      }
-      h3Modal.innerText = title;
-      selectedMedia = image ? image : video;
-      displayModal('photo_modal', mediaType);
+    const dataImg = {
+      'mediaType': mediaType,
+      'media': media,
+      'title': title,
+      'image': image,
+      'video': video
     }
+    Object.keys(dataImg).forEach(key => imgDiv.dataset[key] = dataImg[key]);
+    // bind with PointerEvent to identify media to display
+    imgDiv.addEventListener('click', showMedia.bind(imgDiv));
 
     // MAKE IMG
     if (mediaType == 'image') {
@@ -84,20 +76,21 @@ function photosFactory(name, data) {
         imgDiv.title = video;
       }
     }
-    imgDiv.setAttribute('alt', title);
-    imgDiv.ariaLabel = title;
+    imgDiv.setAttribute('alt', title);  // WCAG
+    imgDiv.ariaLabel = title; //WCAG
+    imgDiv.tabIndex = '0';
 
-    // MAKE TITLE + RATING
+    // MAKE TITLE + articleRating
     h3.innerText = title;
-    rating.innerHTML = `${likes} <i class="fas fa-heart"></i>`;
-    rating.className = 'rating';
-    rating.ariaLabel = 'nombre de likes';
-    rating.addEventListener('click', ratingIncrement);
+    articleRating.innerHTML = `${likes} <i class="fas fa-heart"></i>`;
+    articleRating.className = 'rating';
+    articleRating.ariaLabel = 'nombre de likes';
+    articleRating.addEventListener('click', ratingIncrement);
 
     // BUILD ARTICLE
     article.appendChild(imgDiv);
     article.appendChild(h3);
-    article.appendChild(rating);
+    article.appendChild(articleRating);
 
     return article;
   }
@@ -106,8 +99,35 @@ function photosFactory(name, data) {
 }
 
 
+// DISPLAY PHOTO_MODAL
+function showMedia(me) {
+  // me = this from media
+  if (me instanceof PointerEvent) { me = me.target };
+  const mediaType = me.dataset.mediaType;
+  const title = me.dataset.title;
+  const image = me.dataset.image;
+  const video = me.dataset.video;
+  const media = me.dataset.media;
+  // Top position near top window position
+  modalMedia.style.top = window.scrollY + 90 + 'px';
+  clearMedia();
+  // Choose media to display
+  if (mediaType == 'image') {
+    photoModal.src = media;
+    photoModal.setAttribute('alt', `${title}-XL`);
+  } else if (mediaType == 'video') {
+    videoModal.src = media;
+    videoModal.setAttribute('alt', `${title}-XL`);
+    videoModal.setAttribute('type', 'video/mp4');
+  }
+  h3Modal.innerText = title;
+  selectedMedia = mediaType == 'image' ? image : video;
+  displayModal('photo_modal', mediaType);
+}
+
 // RATING INCREMENT
 function ratingIncrement() {
+  this.innerHTML = `${+this.innerText + 1} <i class="fas fa-heart"></i>`;
   rating.innerHTML = `${+rating.innerText + 1} <i class="fas fa-heart"></i>`;
 }
 

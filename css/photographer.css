@@ -102,7 +102,7 @@ button:hover, button:active {
 
 .portfolio .sort .sort-select fieldset {
   border: 0;
-  padding: 0;
+  padding: 10px;
 }
 
 .portfolio .sort .sort-select ul {
@@ -129,7 +129,8 @@ button:hover, button:active {
   border-bottom: 1px solid white;
 }
 
-.portfolio .sort .sort-select ul li:hover {
+.portfolio .sort .sort-select ul li:hover, .portfolio .sort .sort-select ul li:focus {
+  outline: none;
   color: var(--light-pink);
 }
 

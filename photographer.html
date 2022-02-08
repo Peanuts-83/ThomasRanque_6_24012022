@@ -67,20 +67,20 @@
       <div class="sort-select">
         <form class="sort-by" target="popularite">
           <fieldset>
-            <ul>
-              <li class="selected inactive">
+            <ul tabindex="0" aria-label="Trier les photos par...">
+              <li tabindex="0" class="selected inactive" aria-label="popularité">
                 <i class="fas fa-chevron-up"></i>
                 <i class="fas fa-chevron-down"></i>
                 <input type="radio" id="option1" name="sort-option" title="popularite" checked>
                 <label for="option1">Popularité</label>
               </li>
-              <li class="inactive">
+              <li tabindex="0" class="inactive" aria-label="date">
                 <i class="fas fa-chevron-up"></i>
                 <i class="fas fa-chevron-down"></i>
                 <input type="radio" id="option2" name="sort-option" title="date">
                 <label for="option2">Date</label>
               </li>
-              <li class="inactive">
+              <li tabindex="0" class="inactive" aria-label="titre">
                 <i class="fas fa-chevron-up"></i>
                 <i class="fas fa-chevron-down"></i>
                 <input type="radio" id="option3" name="sort-option" title="titre">

@@ -83,7 +83,7 @@ button {
 
             fieldset {
                 border: 0;
-                padding: 0;
+                padding: 10px;
             }
 
             ul {
@@ -108,7 +108,8 @@ button {
                     padding: 15px 0 15px 10px;
                     border-bottom: 1px solid white;
 
-                    &:hover {
+                    &:hover, &:focus {
+                        outline: none;
                         color: var(--light-pink);
                     }
 
@@ -119,7 +120,7 @@ button {
                     }
 
                     .fa-chevron-up {
-                        display: none;
+                        display: none; 
                         position: absolute;
                         right: 10px;
                     }
