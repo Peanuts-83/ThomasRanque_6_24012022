@@ -58,27 +58,27 @@ function displayPhotos(name, photos) {
 
 // INIT
 async function init() {
-    // Récupère les datas des photographes
+    // Get photographers data
     photographers = await getPhotographers();
-    // Récupère l'id de l'URL || SET default id si accès direct
+    // Get ID || SET default ID if direct access
     let idRequested = window.location.href.split('?')[1];
     if (!idRequested) {
         idRequested = 243;
     }
-    // Récupère le photographe demandé
+    // Get right photographer datas
     [photographer] = await photographers.filter(photographer => photographer.id == idRequested);
-    // Récupère le profil du photographe
+    // Get photographer profile
     const profiles = await getProfiles();
     [profile] = profiles.filter(profile => profile.photographerId == idRequested);
     displayData(photographer, profile);
 
-    // Récupère les datas des photos
+    // Get PHOTOS datas
     photos = await getPhotos();
-    // Récupère les photos du photographe sélectionné et son nom
+    // Get PHOTOS for right photographer
     photos = photos.filter(photo => photo.photographerId == idRequested);
-    // sortPhotos -> displayPhotos by default SORT (popularite)
+    // SORT PHOTOS (default = 'Popularité')
     sortMedia();
-    // FEED COUNTER
+    // Feed COUNTER of likes
     rating.innerHTML = sumRatings();
     price.innerHTML = `${photographer.price}€ / jour`
 };
@@ -102,13 +102,13 @@ const [arrow] = [...labels].filter(label => label.control.checked);
 // SUM RATINGS
 function sumRatings() {
     let totalLikes = photos.reduce((sum, photo) => sum += photo.likes, 0);
-    return `${totalLikes} <i class="fas fa-heart"></i>`;
+    return `${totalLikes} <i class="fas fa-heart" aria-label="icone coeur"></i>`;
 }
 
 // RATING INCREMENT
 function ratingIncrement() {
-    this.innerHTML = `${+this.innerText + 1} <i class="fas fa-heart"></i>`;
-    rating.innerHTML = `${+rating.innerText + 1} <i class="fas fa-heart"></i>`;
+    this.innerHTML = `${+this.innerText + 1} <i class="fas fa-heart" aria-label="icone coeur"></i>`;
+    rating.innerHTML = `${+rating.innerText + 1} <i class="fas fa-heart" aria-label="icone coeur"></i>`;
   }
 
 

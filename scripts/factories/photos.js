@@ -82,7 +82,7 @@ function photosFactory(name, data) {
 
     // MAKE TITLE + articleRating
     h3.innerText = title;
-    articleRating.innerHTML = `${likes} <i class="fas fa-heart"></i>`;
+    articleRating.innerHTML = `${likes} <i class="fas fa-heart" aria-label="icone coeur"></i>`;
     articleRating.className = 'rating';
     articleRating.ariaLabel = 'nombre de likes';
     articleRating.addEventListener('click', ratingIncrement);

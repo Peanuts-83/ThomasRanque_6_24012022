@@ -3,10 +3,11 @@ function photographerFactory(data, profile) {
     const firstname = name.split(' ')[0];
     const picture = `assets/photos/${firstname}/${profile.image}`;
 
+    // PHOTOGRAPHER CARD ON INDEX
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
 
-        // ARTICLE HAUT + <a></a>
+        // ARTICLE ICONE + NAME
         const link = document.createElement('a');
         const divImg = document.createElement('div');
         const h1 = document.createElement( 'h1' );
@@ -27,7 +28,7 @@ function photographerFactory(data, profile) {
         // INSERT shadow as divImg::after
         divImg.before(shadow);
 
-        // ARTICLE BAS
+        // ARTICLE INFOS
         const address = document.createElement('address');
         const blockquote = document.createElement('blockquote');
         const data = document.createElement('data');
@@ -36,13 +37,14 @@ function photographerFactory(data, profile) {
         data.innerText = `${price}€/jour`;
         data.value = price; // WCAG
 
-        // ASSEMBLAGE ARTICLE
+        // BUILD ARTICLE
         const elements = [link, address, blockquote, data];
         elements.forEach(element => article.appendChild(element));
 
         return article;
     }
 
+    // HEADER FOR PHOTOGRAPHER PAGE
     function getPhotographerPage() {
         const divText = document.createElement('div');
         divText.className = 'info';
@@ -66,6 +68,7 @@ function photographerFactory(data, profile) {
         const shadow = img.cloneNode(true);
         shadow.className = 'shadow';
 
+        // BUILD HEADER
         divText.appendChild(h1);
         divText.appendChild(address);
         divText.appendChild(blockquote);
