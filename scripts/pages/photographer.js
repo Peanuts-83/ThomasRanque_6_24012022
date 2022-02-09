@@ -105,6 +105,12 @@ function sumRatings() {
     return `${totalLikes} <i class="fas fa-heart"></i>`;
 }
 
+// RATING INCREMENT
+function ratingIncrement() {
+    this.innerHTML = `${+this.innerText + 1} <i class="fas fa-heart"></i>`;
+    rating.innerHTML = `${+rating.innerText + 1} <i class="fas fa-heart"></i>`;
+  }
+
 
 // SORT PHOTOS
 sort.addEventListener('change', sortMedia);

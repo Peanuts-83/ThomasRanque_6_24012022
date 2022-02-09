@@ -35,11 +35,43 @@ function closeModal(parent) {
     parent.style.display = 'none';
 }
 
+// PHOTO MODAL CLOSE
+function closePhotoModal() {
+  const bgtransp = modalMedia.parentElement;
+  bgtransp.style.display = 'none';
+}
+
 initModals();
 
 
 /////////////////
 // PHOTO MODAL //
+
+function showMedia(me) {
+    // me = this from media
+    if (me instanceof PointerEvent) { me = me.target };
+    const mediaType = me.dataset.mediaType;
+    const title = me.dataset.title;
+    const image = me.dataset.image;
+    const video = me.dataset.video;
+    const media = me.dataset.media;
+    // Top position near top window position
+    modalMedia.style.top = window.scrollY + 90 + 'px';
+    clearMedia();
+    // Choose media to display
+    if (mediaType == 'image') {
+      photoModal.src = media;
+      photoModal.setAttribute('alt', `${title}-XL`);
+    } else if (mediaType == 'video') {
+      videoModal.src = media;
+      videoModal.setAttribute('alt', `${title}-XL`);
+      videoModal.setAttribute('type', 'video/mp4');
+    }
+    h3Modal.innerText = title;
+    selectedMedia = mediaType == 'image' ? image : video;
+    displayModal('photo_modal', mediaType);
+  }
+
 function changeMedia(way) {
     // GET INDEX OF ACTUAL MEDIA IN ARRAY
     const id = photos.indexOf(photos.filter(photo => photo.image == selectedMedia || photo.video == selectedMedia)[0]);
