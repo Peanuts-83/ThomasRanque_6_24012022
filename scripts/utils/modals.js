@@ -30,15 +30,10 @@ function displayModal(name, mediaType) {
     bgtransp.style.display = 'block';
 }
 
+// PHOTO MODAL CLOSE
 function closeModal(parent) {
     bgtransp.style.display = 'none';
     parent.style.display = 'none';
-}
-
-// PHOTO MODAL CLOSE
-function closePhotoModal() {
-  const bgtransp = modalMedia.parentElement;
-  bgtransp.style.display = 'none';
 }
 
 initModals();

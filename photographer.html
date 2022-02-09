@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,95 +27,99 @@
     <div class="photograph-header" aria-label="infos du photographe">
       <button class="contact_button">Contactez-moi</button>
     </div>
-  </main>
 
 
-  <div class="bgtransp" aria-label="arrière plan transparent de modale">
-  </div>
-
-
-  <div id="contact_modal" aria-label="modale de contact">
-    <div class="modal">
-      <header>
-        <h2>Contactez-moi</h2>
-        <img src="./assets/icons/close.svg" class="close" alt="close button" aria-label="bouton fermer"/>
-      </header>
-      <form id="contact_form" aria-label="formulaire de contact">
-        <div>
-          <label for="prenom">Prénom</label>
-          <input class="fieldText" type="text" id="prenom" name="prenom" title="prenom" />
-          <div class="comment" id="prenom-comment" aria-label="Explication de complétion">Veuillez saisir au minimum 2 caractères</div>
-          <label for="nom">Nom</label>
-          <input class="fieldText" type="text" id="nom" name="nom" title="nom" />
-          <div class="comment" id="nom-comment"  aria-label="Explication de complétion">Veuillez saisir au minimum 2 caractères</div>
-          <label for="email">Email</label>
-          <input class="fieldText" type="email" id="email" name="email" title="email" />
-          <div class="comment" id="email-comment" aria-label="Explication de complétion">Veuillez saisir un email valide</div>
-          <label for="message">Message</label>
-          <textarea class="fieldText" rows="4" id="message" name="message" title="message" ></textarea>
-          <div class="comment" id="message-comment" aria-label="Explication de complétion">Votre message doit être composé d'au moins 2 caractères</div>
-        </div>
-        <button class="button btn-submit" type="submit">Envoyer</button>
-      </form>
+    <div class="bgtransp" aria-label="arrière plan transparent de modale">
     </div>
-  </div>
 
 
-  <section class="portfolio">
-    <!-- SELECT MENU SORT -->
-    <div class="sort" aria-label="sélecteur de tri des photos">
-      <strong>Trier par</strong>
-      <div class="sort-select">
-        <form class="sort-by" target="popularite">
-          <fieldset>
-            <ul tabindex="0" aria-label="Trier les photos par...">
-              <li tabindex="0" class="selected inactive" aria-label="popularité">
-                <i class="fas fa-chevron-up"></i>
-                <i class="fas fa-chevron-down"></i>
-                <input type="radio" id="option1" name="sort-option" title="popularite" checked>
-                <label for="option1">Popularité</label>
-              </li>
-              <li tabindex="0" class="inactive" aria-label="date">
-                <i class="fas fa-chevron-up"></i>
-                <i class="fas fa-chevron-down"></i>
-                <input type="radio" id="option2" name="sort-option" title="date">
-                <label for="option2">Date</label>
-              </li>
-              <li tabindex="0" class="inactive" aria-label="titre">
-                <i class="fas fa-chevron-up"></i>
-                <i class="fas fa-chevron-down"></i>
-                <input type="radio" id="option3" name="sort-option" title="titre">
-                <label for="option3">Titre</label>
-              </li>
-            </ul>
-          </fieldset>
+    <div id="contact_modal" aria-label="modale de contact">
+      <div class="modal">
+        <header>
+          <h2>Contactez-moi</h2>
+          <img src="./assets/icons/close.svg" class="close" alt="close button" aria-label="bouton fermer" />
+        </header>
+        <form id="contact_form" aria-label="formulaire de contact">
+          <div>
+            <label for="prenom">Prénom</label>
+            <input class="fieldText" type="text" id="prenom" name="prenom" title="prenom" />
+            <div class="comment" id="prenom-comment" aria-label="Explication de complétion">Veuillez saisir au minimum 2
+              caractères</div>
+            <label for="nom">Nom</label>
+            <input class="fieldText" type="text" id="nom" name="nom" title="nom" />
+            <div class="comment" id="nom-comment" aria-label="Explication de complétion">Veuillez saisir au minimum 2
+              caractères</div>
+            <label for="email">Email</label>
+            <input class="fieldText" type="email" id="email" name="email" title="email" />
+            <div class="comment" id="email-comment" aria-label="Explication de complétion">Veuillez saisir un email
+              valide</div>
+            <label for="message">Message</label>
+            <textarea class="fieldText" rows="4" id="message" name="message" title="message"></textarea>
+            <div class="comment" id="message-comment" aria-label="Explication de complétion">Votre message doit être
+              composé d'au moins 2 caractères</div>
+          </div>
+          <button class="button btn-submit" type="submit">Envoyer</button>
         </form>
       </div>
     </div>
-    <div class="portfolio-imgs" aria-label="portfolio">
-    </div>
-    <!-- COUNTER -->
-    <div class="counter" aria-label="compteur de likes & tarif">
-      <span class="counter-count" id="rating" aria-label="nombre total de likes">ratings</span>
-      <span class="counter-count" id="price" aria-label="tarif journalier">price</span>
-    </div>
-  </section>
 
 
-  <div id="photo_modal" aria-label="modale de média">
-    <div class="modal">
-      <img src="./assets/icons/close.svg" class="close" alt="close button"/>
-      <nav>
-        <div class="previous" aria-label="média précédent"><i class="fas fa-chevron-left"></i></div>
-        <div class="photo-details" aria-label="média grande taille">
-          <img src="#" alt="#" class="photo" aria-label="grande photo">
-          <video class="video" aria-label="grande vidéo"></video>
-          <h3></h3>
+    <section class="portfolio">
+      <!-- SELECT MENU SORT -->
+      <div class="sort" aria-label="sélecteur de tri des photos">
+        <strong>Trier par</strong>
+        <div class="sort-select">
+          <form class="sort-by" target="popularite">
+            <fieldset>
+              <ul tabindex="0" aria-label="Trier les photos par...">
+                <li tabindex="0" class="selected inactive" aria-label="popularité">
+                  <i class="fas fa-chevron-up"></i>
+                  <i class="fas fa-chevron-down"></i>
+                  <input type="radio" id="option1" name="sort-option" title="popularite" checked>
+                  <label for="option1">Popularité</label>
+                </li>
+                <li tabindex="0" class="inactive" aria-label="date">
+                  <i class="fas fa-chevron-up"></i>
+                  <i class="fas fa-chevron-down"></i>
+                  <input type="radio" id="option2" name="sort-option" title="date">
+                  <label for="option2">Date</label>
+                </li>
+                <li tabindex="0" class="inactive" aria-label="titre">
+                  <i class="fas fa-chevron-up"></i>
+                  <i class="fas fa-chevron-down"></i>
+                  <input type="radio" id="option3" name="sort-option" title="titre">
+                  <label for="option3">Titre</label>
+                </li>
+              </ul>
+            </fieldset>
+          </form>
         </div>
-        <div class="next" aria-label="média suivant"><i class="fas fa-chevron-right"></i></div>
-      </nav>
+      </div>
+      <div class="portfolio-imgs" aria-label="portfolio">
+      </div>
+      <!-- COUNTER -->
+      <div class="counter" aria-label="compteur de likes & tarif">
+        <span class="counter-count" id="rating" aria-label="nombre total de likes">ratings</span>
+        <span class="counter-count" id="price" aria-label="tarif journalier">price</span>
+      </div>
+    </section>
+
+
+    <div id="photo_modal" aria-label="modale de média">
+      <div class="modal">
+        <img src="./assets/icons/close.svg" class="close" alt="close button" />
+        <nav>
+          <div class="previous" aria-label="média précédent"><i class="fas fa-chevron-left"></i></div>
+          <div class="photo-details" aria-label="média grande taille">
+            <img src="#" alt="#" class="photo" aria-label="grande photo">
+            <video class="video" aria-label="grande vidéo"></video>
+            <h3></h3>
+          </div>
+          <div class="next" aria-label="média suivant"><i class="fas fa-chevron-right"></i></div>
+        </nav>
+      </div>
     </div>
-  </div>
+  </main>
 
   <!-- CIRCLE MASK for .photo-profile -->
   <svg width='200' height='200'>
