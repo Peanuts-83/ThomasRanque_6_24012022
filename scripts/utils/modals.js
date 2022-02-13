@@ -6,7 +6,7 @@ function initModals() {
     contact.onclick = () => { displayModal('contact_modal') };
     previous.onclick = () => { changeMedia('prev') };
     next.onclick = () => { changeMedia('next') };
-    
+
     document.querySelectorAll('.modal').forEach(modal => {
         const parent = modal.parentElement;
         const close = modal.querySelector('.close');
@@ -44,7 +44,7 @@ initModals();
 
 function showMedia(me) {
     // me = this from media
-    if (me instanceof PointerEvent) { me = me.target };
+    if (me.target) { me = me.target };
     const mediaType = me.dataset.mediaType;
     const title = me.dataset.title;
     const image = me.dataset.image;
