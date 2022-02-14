@@ -16,14 +16,14 @@ function initModals() {
 
 function displayModal(name, mediaType) {
     const modal = document.querySelector(`#${name}`);
-    // DETECT TYPE OF MEDIA TO SHOW IF mediaType PROVIDED
-    if (name == 'photo_modal' && mediaType) {
+    // DETECT TYPE OF MEDIA TO SHOW IF mediaType PROVIDED && other modal not OPENED
+    if (name == 'photo_modal' && mediaType  && contactModal.style.display != 'flex') {
         mediaType == 'video' ?
             (videoModal.style.display = 'block',
                 videoModal.controls = true)
             :
-            photoModal.style.display = 'block';
-    } else if (name == 'contact_modal') {
+            photoModal.style.display = 'flex';
+    } else if (name == 'contact_modal' && photoModal.style.display != 'flex') {
         feedContact();
     }
     modal.style.display = 'flex';
@@ -45,6 +45,7 @@ initModals();
 function showMedia(me) {
     // me = this from media
     if (me.target) { me = me.target };
+
     const mediaType = me.dataset.mediaType;
     const title = me.dataset.title;
     const image = me.dataset.image;
@@ -53,6 +54,7 @@ function showMedia(me) {
     // Top position near top window position
     modalMedia.style.top = window.scrollY + 90 + 'px';
     clearMedia();
+
     // Choose media to display
     if (mediaType == 'image') {
       photoModal.src = media;
@@ -141,6 +143,15 @@ function readForm(event) {
         closeModal(contactModal);
     }
 }
+
+// GET FOCUS
+// const observer = new MutationObserver(function() {
+//     if (contactForm.style.display != 'none') {
+//         contactForm.tabindex = '-1';
+//         contactForm.focus();
+//     }
+// })
+// observer.observe(contactForm, {attributes: true, childList: true});
 
 // VALIDATE FORM // Return true|false
 function validateForm(data) {

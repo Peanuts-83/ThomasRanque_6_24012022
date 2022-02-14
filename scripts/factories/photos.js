@@ -97,4 +97,3 @@ function photosFactory(name, data) {
 
   return { getPhotoCardDOM }
 }
-

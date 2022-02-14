@@ -134,8 +134,8 @@ header h2 {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  -webkit-mask: url("#svgmask");
-          mask: url("#svgmask");
+  -webkit-clip-path: circle(90px at center);
+          clip-path: circle(90px at center);
 }
 
 .shadow {
@@ -144,8 +144,8 @@ header h2 {
   border-radius: 50%;
   margin-top: 5px;
   background-blend-mode: multiply;
-  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
-          mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.7) 50%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle, black 50%, transparent 70%);
+          mask-image: radial-gradient(circle, black 50%, transparent 70%);
   -webkit-transform: scaleX(0.95);
           transform: scaleX(0.95);
   position: absolute;

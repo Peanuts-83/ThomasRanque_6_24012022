@@ -198,12 +198,26 @@ document.onkeydown = (e) => {
                 sortMedia();
                 toggleSortMenu();
             }
-            // SHOW MEDIA 
-            if (document.activeElement.className == 'photo' && (!modalMedia.style.display || modalMedia.style.display == 'none')) {
-                let me = document.activeElement;
-                showMedia(me);
-                modalMedia.tabIndex = '-1';
-                modalMedia.focus();
+            // SHOW MEDIA
+            if (document.activeElement.className == 'photo'
+                && (!modalMedia.style.display || modalMedia.style.display == 'none')) {
+                    if (!contactModal.style.display || contactModal.style.display == 'none') {
+                        let me = document.activeElement;
+                        showMedia(me);
+                        modalMedia.focus();
+                    } else {
+                        modalMedia.style.display = 'none';
+                    }
+            }
+            // SHOW CONTACT
+            if (document.activeElement.className == 'contact_button'
+                && (!contactModal.style.display || contactModal.style.display == 'none')) {
+                    if (!photoModal.style.display || photoModal.style.display == 'none') {
+                        displayModal('contact_modal',null)
+                        contactForm.focus();
+                    } else {
+                        contactModal.style.display = 'none';
+                    }
             }
             // TOGGLE PLAY/PAUSE VIDEO
             if (modalMedia.style.display != 'none') {

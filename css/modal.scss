@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,.3);
@@ -103,7 +103,8 @@
 #photo_modal {
   display: none;
   position: absolute;
-  left: 100px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
   width: 50%;
 
@@ -165,7 +166,6 @@
 // MEDIUM Desktop
 @media screen and (max-width: 1600px) {
     #photo_modal {
-        left: 100px;
         width: 70%;
     }
 }
@@ -175,15 +175,13 @@
     #photo_modal {
         left: 0;
         width: 100%;
+        transform: translateX(0);
     }
 }
 
 // MOBIL
 @media screen and (max-width: 768px) {
     #photo_modal {
-        left: 0;
-        width: 100%;
-
         .modal {
             padding: 30px 0;
 

@@ -106,9 +106,9 @@ button:hover, button:active {
 }
 
 .portfolio .sort .sort-select ul {
+  z-index: 1;
   position: absolute;
   top: -5px;
-  z-index: 1;
   padding: 10px 10px;
   margin: 0 20px;
   width: 200px;

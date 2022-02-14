@@ -23,10 +23,11 @@ function photographerFactory(data, profile) {
         shadow.className = 'shadow';
 
         h1.textContent = name;
+        link.appendChild(shadow);
         link.appendChild(divImg);
         link.appendChild(h1);
         // INSERT shadow as divImg::after
-        divImg.before(shadow);
+        //divImg.before(shadow);
 
         // ARTICLE INFOS
         const address = document.createElement('address');
