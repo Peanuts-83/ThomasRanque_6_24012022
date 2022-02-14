@@ -28,6 +28,7 @@ function photosFactory(name, data) {
     const imgDiv = document.createElement('div');
     const videoDiv = document.createElement('video');
     const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
     const h3 = document.createElement('h3');
     const articleRating = document.createElement('span');
 
@@ -55,17 +56,20 @@ function photosFactory(name, data) {
       // BUILD VIDEO
       videoDiv.src = media;
       videoDiv.type = 'video/mp4';
+      videoDiv.currentTime = 1;
       // BUILD CANVAS
       videoDiv.onloadedmetadata = () => {
         canvas.width = videoDiv.videoWidth;
         canvas.height = videoDiv.videoHeight;
         canvas.ratio = videoDiv.videoWidth / videoDiv.videoHeight;
       }
-      videoDiv.onloadeddata = () => {
+      // oncanplay
+      videoDiv.oncanplay = () => {
         // CENTER CANVAS POS & SNAP TO videoImage
         let xPos = canvas.width > canvas.height ? canvas.width / 2 / canvas.ratio * -1 : 0;
         let yPos = canvas.width < canvas.height ? canvas.height / 2 / canvas.ratio * -1 : 0;
-        canvas.getContext('2d').drawImage(videoDiv, xPos, yPos);
+        ctx.fillRect(xPos, yPos, canvas.width, canvas.height);
+        ctx.drawImage(videoDiv,xPos, yPos, canvas.width, canvas.height);
         let videoImage = canvas.toDataURL('image/png');
         // MAKE PREVIEW VIDEO FROM CANVAS TO ARTICLE
         imgDiv.innerHTML = '<i class="far fa-play-circle"></i>';

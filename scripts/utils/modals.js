@@ -45,6 +45,8 @@ initModals();
 function showMedia(me) {
     // me = this from media
     if (me.target) { me = me.target };
+    // if play icon cliked
+    if (me.classList.contains('far')) {  me = me.parentElement };
 
     const mediaType = me.dataset.mediaType;
     const title = me.dataset.title;
