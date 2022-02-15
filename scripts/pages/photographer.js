@@ -204,7 +204,6 @@ document.onkeydown = (e) => {
                     if (!contactModal.style.display || contactModal.style.display == 'none') {
                         let me = document.activeElement;
                         showMedia(me);
-                        modalMedia.focus();
                     } else {
                         modalMedia.style.display = 'none';
                     }
@@ -213,8 +212,7 @@ document.onkeydown = (e) => {
             if (document.activeElement.className == 'contact_button'
                 && (!contactModal.style.display || contactModal.style.display == 'none')) {
                     if (!photoModal.style.display || photoModal.style.display == 'none') {
-                        displayModal('contact_modal',null)
-                        contactForm.focus();
+                        displayModal('contact_modal',null);
                     } else {
                         contactModal.style.display = 'none';
                     }
@@ -224,6 +222,15 @@ document.onkeydown = (e) => {
                 if (videoModal.style.display != 'none') {
                     !videoModal.paused ? videoModal.pause() : videoModal.play();
                 }
+            }
+            break;
+        case 'Tab':
+            // SHOW CONTACT
+            if (document.activeElement.className == 'contact_button'
+                && (!contactModal.style.display || contactModal.style.display == 'none')) {
+                    if (!photoModal.style.display || photoModal.style.display == 'none') {
+                        contactModal.querySelector('input').focus();
+                    }
             }
             break;
         case 'Escape':

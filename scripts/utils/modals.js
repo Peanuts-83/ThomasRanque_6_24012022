@@ -3,7 +3,7 @@
 ////////////
 // MODALS //
 function initModals() {
-    contact.onclick = () => { displayModal('contact_modal') };
+    contact.onclick = () => { displayModal('contact_modal', null) };
     previous.onclick = () => { changeMedia('prev') };
     next.onclick = () => { changeMedia('next') };
 
@@ -17,12 +17,14 @@ function initModals() {
 function displayModal(name, mediaType) {
     const modal = document.querySelector(`#${name}`);
     // DETECT TYPE OF MEDIA TO SHOW IF mediaType PROVIDED && other modal not OPENED
-    if (name == 'photo_modal' && mediaType  && contactModal.style.display != 'flex') {
+    if (name == 'photo_modal' && mediaType && contactModal.style.display != 'flex') {
         mediaType == 'video' ?
             (videoModal.style.display = 'block',
-                videoModal.controls = true)
+                videoModal.controls = true,
+                videoModal.focus())
             :
-            photoModal.style.display = 'flex';
+            (photoModal.style.display = 'flex',
+            photoModal.focus());
     } else if (name == 'contact_modal' && photoModal.style.display != 'flex') {
         feedContact();
     }
@@ -46,7 +48,7 @@ function showMedia(me) {
     // me = this from media
     if (me.target) { me = me.target };
     // if play icon cliked
-    if (me.classList.contains('far')) {  me = me.parentElement };
+    if (me.classList.contains('far')) { me = me.parentElement };
 
     const mediaType = me.dataset.mediaType;
     const title = me.dataset.title;
@@ -59,17 +61,27 @@ function showMedia(me) {
 
     // Choose media to display
     if (mediaType == 'image') {
-      photoModal.src = media;
-      photoModal.setAttribute('alt', `${title}-XL`);
+        photoModal.src = media;
+        photoModal.setAttribute('alt', `${title}-XL`);
     } else if (mediaType == 'video') {
-      videoModal.src = media;
-      videoModal.setAttribute('alt', `${title}-XL`);
-      videoModal.setAttribute('type', 'video/mp4');
+        videoModal.src = media;
+        videoModal.setAttribute('alt', `${title}-XL`);
+        videoModal.setAttribute('type', 'video/mp4');
+        let playPromise = videoModal.play();
+
+        if(playPromise != undefined) {
+            playPromise
+            .then(_ => {
+                videoModal.pause();
+            }).catch(err => {
+                console.log(err)
+            });
+        }
     }
     h3Modal.innerText = title;
     selectedMedia = mediaType == 'image' ? image : video;
     displayModal('photo_modal', mediaType);
-  }
+}
 
 function changeMedia(way) {
     // GET INDEX OF ACTUAL MEDIA IN ARRAY
@@ -123,6 +135,9 @@ function feedContact() {
     contactModal.style.top = `${window.scrollY + 60}px`;
     // ADD PHOTOGRAPHER NAME
     h2.innerText = `Contactez-moi ${photographer.name}`;
+    console.log('CONTACT:', contactModal.querySelector('input'))
+    contactModal.querySelector('input').tabIndex = '-1';
+    contactModal.querySelector('input').focus();
 }
 
 // FAKE FORM DATA SEND
@@ -146,14 +161,6 @@ function readForm(event) {
     }
 }
 
-// GET FOCUS
-// const observer = new MutationObserver(function() {
-//     if (contactForm.style.display != 'none') {
-//         contactForm.tabindex = '-1';
-//         contactForm.focus();
-//     }
-// })
-// observer.observe(contactForm, {attributes: true, childList: true});
 
 // VALIDATE FORM // Return true|false
 function validateForm(data) {
