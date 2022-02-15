@@ -3,7 +3,6 @@
 ////////////
 // MODALS //
 function initModals() {
-    contact.onclick = () => { displayModal('contact_modal', null) };
     previous.onclick = () => { changeMedia('prev') };
     next.onclick = () => { changeMedia('next') };
 
@@ -17,19 +16,21 @@ function initModals() {
 function displayModal(name, mediaType) {
     const modal = document.querySelector(`#${name}`);
     // DETECT TYPE OF MEDIA TO SHOW IF mediaType PROVIDED && other modal not OPENED
-    if (name == 'photo_modal' && mediaType && contactModal.style.display != 'flex') {
+    if (name == 'photo_modal' && mediaType && (!contactModal.style.display || contactModal.style.display == 'none')) {
         mediaType == 'video' ?
             (videoModal.style.display = 'block',
-                videoModal.controls = true,
-                videoModal.focus())
+                videoModal.controls = true)
             :
-            (photoModal.style.display = 'flex',
-            photoModal.focus());
-    } else if (name == 'contact_modal' && photoModal.style.display != 'flex') {
+            photoModal.style.display = 'flex';
+
+        modal.style.display = 'flex';
+        bgtransp.style.display = 'block';
+    } else if (name == 'contact_modal' && (!modalMedia.style.display || modalMedia.style.display == 'none')) {
         feedContact();
+        modal.style.display = 'flex';
+        bgtransp.style.display = 'block';
     }
-    modal.style.display = 'flex';
-    bgtransp.style.display = 'block';
+    modal.focus();
 }
 
 // PHOTO MODAL CLOSE
@@ -67,16 +68,16 @@ function showMedia(me) {
         videoModal.src = media;
         videoModal.setAttribute('alt', `${title}-XL`);
         videoModal.setAttribute('type', 'video/mp4');
-        let playPromise = videoModal.play();
+        // let playPromise = videoModal.play();
 
-        if(playPromise != undefined) {
-            playPromise
-            .then(_ => {
-                videoModal.pause();
-            }).catch(err => {
-                console.log(err)
-            });
-        }
+        // if(playPromise != undefined) {
+        //     playPromise
+        //     .then(_ => {
+        //         videoModal.pause();
+        //     }).catch(err => {
+        //         console.log(err)
+        //     });
+        // }
     }
     h3Modal.innerText = title;
     selectedMedia = mediaType == 'image' ? image : video;
@@ -135,9 +136,6 @@ function feedContact() {
     contactModal.style.top = `${window.scrollY + 60}px`;
     // ADD PHOTOGRAPHER NAME
     h2.innerText = `Contactez-moi ${photographer.name}`;
-    console.log('CONTACT:', contactModal.querySelector('input'))
-    contactModal.querySelector('input').tabIndex = '-1';
-    contactModal.querySelector('input').focus();
 }
 
 // FAKE FORM DATA SEND

@@ -111,6 +111,8 @@ function ratingIncrement() {
     rating.innerHTML = `${+rating.innerText + 1} <i class="fas fa-heart" aria-label="icone coeur"></i>`;
   }
 
+//  CONTACTBTN INIT
+    contact.onclick = () => { displayModal('contact_modal', null) };
 
 // SORT PHOTOS
 sort.addEventListener('change', sortMedia);
@@ -173,7 +175,7 @@ options[2].addEventListener('focusout', desactivateMenu);
 contact.addEventListener('focus', desactivateMenu); // for SHIFT TAB NAV
 
 // WCAG KEYBOARD NAVIGATION
-document.onkeydown = (e) => {
+document.onkeyup = (e) => {
     switch (e.key) {
         case 'ArrowLeft':
             // NEXT PHOTO photoModal
@@ -187,7 +189,9 @@ document.onkeydown = (e) => {
                 changeMedia('next');
             }
             break;
+        case ' ':
         case 'Enter':
+            e.preventDefault();
             // SELECT SORT OPTION
             if (Array.from(options).every(li => li.classList.contains('active'))
                 &&
@@ -212,7 +216,7 @@ document.onkeydown = (e) => {
             if (document.activeElement.className == 'contact_button'
                 && (!contactModal.style.display || contactModal.style.display == 'none')) {
                     if (!photoModal.style.display || photoModal.style.display == 'none') {
-                        displayModal('contact_modal',null);
+                        displayModal('contact_modal', null);
                     } else {
                         contactModal.style.display = 'none';
                     }
@@ -222,15 +226,6 @@ document.onkeydown = (e) => {
                 if (videoModal.style.display != 'none') {
                     !videoModal.paused ? videoModal.pause() : videoModal.play();
                 }
-            }
-            break;
-        case 'Tab':
-            // SHOW CONTACT
-            if (document.activeElement.className == 'contact_button'
-                && (!contactModal.style.display || contactModal.style.display == 'none')) {
-                    if (!photoModal.style.display || photoModal.style.display == 'none') {
-                        contactModal.querySelector('input').focus();
-                    }
             }
             break;
         case 'Escape':
