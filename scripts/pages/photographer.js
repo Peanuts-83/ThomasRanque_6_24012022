@@ -229,7 +229,6 @@ document.onkeyup = (e) => {
             // TOGGLE PLAY/PAUSE VIDEO
             if (modalMedia.style.display && modalMedia.style.display != 'none') {
                 if (videoModal.style.display != 'none') {
-                    // videoModal.load();
                     !videoModal.paused ? videoModal.pause() : videoModal.play();
                 }
             }

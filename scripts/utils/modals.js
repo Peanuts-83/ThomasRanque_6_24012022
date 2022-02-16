@@ -69,7 +69,7 @@ function showMedia(me) {
         videoModal.setAttribute('alt', `${title}-XL`);
         videoModal.setAttribute('type', 'video/mp4');
         videoModal.load();
-        let playPromise = videoModal.play();
+        let playPromise = videoModal.load();
 
         if(playPromise != undefined) {
             playPromise
