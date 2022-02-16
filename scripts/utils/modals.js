@@ -131,11 +131,6 @@ function clearMedia() {
 function feedContact() {
     // const windowWidth = window.innerWidth;
     const h2 = contactModal.querySelector('h2');
-
-    // SET MODAL POSITION X Y
-    // contactModal.style.left = `${windowWidth / 2 - 330}px`;
-    // contactModal.style.top = `${window.scrollY + 60}px`;
-    // ADD PHOTOGRAPHER NAME
     h2.innerText = `Contactez-moi ${photographer.name}`;
 }
 
