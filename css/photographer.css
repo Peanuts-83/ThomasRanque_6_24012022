@@ -240,6 +240,7 @@ button:hover, button:active {
 
 /* COUNTER */
 .counter {
+  z-index: 2;
   position: fixed;
   bottom: 0px;
   right: 40px;
