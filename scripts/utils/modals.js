@@ -68,16 +68,17 @@ function showMedia(me) {
         videoModal.src = media;
         videoModal.setAttribute('alt', `${title}-XL`);
         videoModal.setAttribute('type', 'video/mp4');
-        // let playPromise = videoModal.play();
+        videoModal.load();
+        let playPromise = videoModal.play();
 
-        // if(playPromise != undefined) {
-        //     playPromise
-        //     .then(_ => {
-        //         videoModal.pause();
-        //     }).catch(err => {
-        //         console.log(err)
-        //     });
-        // }
+        if(playPromise != undefined) {
+            playPromise
+            .then(_ => {
+                videoModal.pause();
+            }).catch(err => {
+                console.log(err)
+            });
+        }
     }
     h3Modal.innerText = title;
     selectedMedia = mediaType == 'image' ? image : video;
@@ -128,12 +129,12 @@ function clearMedia() {
 
 // POSITION & CONTENT FORM
 function feedContact() {
-    const windowWidth = window.innerWidth;
+    // const windowWidth = window.innerWidth;
     const h2 = contactModal.querySelector('h2');
 
     // SET MODAL POSITION X Y
-    contactModal.style.left = `${windowWidth / 2 - 330}px`;
-    contactModal.style.top = `${window.scrollY + 60}px`;
+    // contactModal.style.left = `${windowWidth / 2 - 330}px`;
+    // contactModal.style.top = `${window.scrollY + 60}px`;
     // ADD PHOTOGRAPHER NAME
     h2.innerText = `Contactez-moi ${photographer.name}`;
 }

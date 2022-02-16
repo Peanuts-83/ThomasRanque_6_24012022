@@ -25,6 +25,8 @@
   display: none;
   position: absolute;
   z-index: 2;
+  top: 70px;
+  left: calc(50% - 330px);
 }
 
 #contact_modal .modal {
@@ -73,11 +75,6 @@
   margin: 0 0 20px 0;
 }
 
-#contact_modal .modal textarea {
-  width: 100%;
-  resize: none;
-}
-
 #contact_modal form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -114,6 +111,8 @@
 
 #contact_modal form .fieldText {
   width: 100%;
+  min-width: 50px;
+  resize: none;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -214,6 +213,16 @@
 }
 
 @media screen and (max-width: 992px) {
+  #contact_modal {
+    width: 500px;
+    left: calc(50% - 250px);
+  }
+  #contact_modal .modal header h2 {
+    font-size: 48px;
+  }
+  #contact_modal .modal header .close {
+    width: 80px;
+  }
   #photo_modal {
     left: 0;
     width: 100%;
@@ -223,6 +232,27 @@
 }
 
 @media screen and (max-width: 768px) {
+  #contact_modal {
+    width: 100%;
+    left: 0;
+  }
+  #contact_modal .modal header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #contact_modal .modal header h2 {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    font-size: 36px;
+  }
+  #contact_modal .modal header .close {
+    width: 60px;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
   #photo_modal .modal {
     padding: 30px 0;
   }

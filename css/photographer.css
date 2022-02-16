@@ -98,6 +98,7 @@ button:hover, button:active {
 .portfolio .sort .sort-select {
   position: relative;
   width: 250px;
+  z-index: 1;
 }
 
 .portfolio .sort .sort-select fieldset {
@@ -106,7 +107,6 @@ button:hover, button:active {
 }
 
 .portfolio .sort .sort-select ul {
-  z-index: 1;
   position: absolute;
   top: -5px;
   padding: 10px 10px;
@@ -129,7 +129,7 @@ button:hover, button:active {
   border-bottom: 1px solid white;
 }
 
-.portfolio .sort .sort-select ul li:hover, .portfolio .sort .sort-select ul li:focus {
+.portfolio .sort .sort-select ul li:hover, .portfolio .sort .sort-select ul li:active {
   outline: none;
   color: var(--light-pink);
 }

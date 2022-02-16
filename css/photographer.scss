@@ -80,6 +80,7 @@ button {
         .sort-select {
             position: relative;
             width: 250px;
+            z-index: 1;
 
             fieldset {
                 border: 0;
@@ -87,7 +88,6 @@ button {
             }
 
             ul {
-                z-index: 1;
                 position: absolute;
                 top: -5px;
                 padding: 10px 10px;
@@ -108,7 +108,7 @@ button {
                     padding: 15px 0 15px 10px;
                     border-bottom: 1px solid white;
 
-                    &:hover, &:focus {
+                    &:hover, &:active {
                         outline: none;
                         color: var(--light-pink);
                     }
@@ -150,14 +150,9 @@ button {
                             }
                         }
                     }
-                    // first option // Popularité
-                    // &:nth-child(1) {
-                    //     // padding-top: 0;
-                    // }
-                    // last option // Titre
+
                     &:nth-last-child(1) {
                         border-bottom: 0;
-
                     }
                 }
             }

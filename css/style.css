@@ -175,9 +175,6 @@ header h2 {
             flex-direction: column;
     margin-top: 20px;
   }
-  header h2 {
-    white-space: nowrap;
-  }
   h1 {
     font-size: 28px;
   }

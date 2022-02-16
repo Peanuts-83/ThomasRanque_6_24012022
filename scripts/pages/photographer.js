@@ -109,10 +109,11 @@ function sumRatings() {
 function ratingIncrement() {
     this.innerHTML = `${+this.innerText + 1} <i class="fas fa-heart" aria-label="icone coeur"></i>`;
     rating.innerHTML = `${+rating.innerText + 1} <i class="fas fa-heart" aria-label="icone coeur"></i>`;
-  }
+}
 
 //  CONTACTBTN INIT
-    contact.onclick = () => { displayModal('contact_modal', null) };
+contact.onclick = () => { displayModal('contact_modal', null) };
+
 
 // SORT PHOTOS
 sort.addEventListener('change', sortMedia);
@@ -148,8 +149,10 @@ function setOption() {
 }
 
 // SORT MENU TOGGLE
-sort.addEventListener('click', toggleSortMenu);
-labels.forEach(label => label.addEventListener('click', toggleSortMenu));
+optionsGroup.addEventListener('mouseenter', activateMenu);
+optionsGroup.addEventListener('mouseover', activateMenu);
+optionsGroup.addEventListener('mouseleave', desactivateMenu);
+
 function toggleSortMenu() {
     Array.from(options).every(li => li.classList.contains('active')) ?
         desactivateMenu() : activateMenu();
@@ -162,7 +165,9 @@ function activateMenu() {
 
 // DESACTIVATE SORT MENU
 function desactivateMenu() {
-    options.forEach(li => li.classList.replace('active', 'inactive'));
+    if ([...options].every(li => !li.matches(':hover'))) {  // check no mouseover MENU
+        options.forEach(li => li.classList.replace('active', 'inactive'));
+    }
 }
 
 
@@ -170,9 +175,9 @@ function desactivateMenu() {
 // KEYBOARD NAVIGATION //
 
 // SORT MENU ACTIVATE / DESACTIVATE WITH TAB FOCUS
-optionsGroup.addEventListener('focus', activateMenu);
-options[2].addEventListener('focusout', desactivateMenu);
-contact.addEventListener('focus', desactivateMenu); // for SHIFT TAB NAV
+optionsGroup.addEventListener('focus', activateMenu);   // ul
+options[2].addEventListener('focusout', desactivateMenu);   // last li
+contact.addEventListener('focus', desactivateMenu); // for SHIFT TAB NAV on first li
 
 // WCAG KEYBOARD NAVIGATION
 document.onkeyup = (e) => {
@@ -205,25 +210,26 @@ document.onkeyup = (e) => {
             // SHOW MEDIA
             if (document.activeElement.className == 'photo'
                 && (!modalMedia.style.display || modalMedia.style.display == 'none')) {
-                    if (!contactModal.style.display || contactModal.style.display == 'none') {
-                        let me = document.activeElement;
-                        showMedia(me);
-                    } else {
-                        modalMedia.style.display = 'none';
-                    }
+                if (!contactModal.style.display || contactModal.style.display == 'none') {
+                    let me = document.activeElement;
+                    showMedia(me);
+                } else {
+                    modalMedia.style.display = 'none';
+                }
             }
             // SHOW CONTACT
             if (document.activeElement.className == 'contact_button'
                 && (!contactModal.style.display || contactModal.style.display == 'none')) {
-                    if (!photoModal.style.display || photoModal.style.display == 'none') {
-                        displayModal('contact_modal', null);
-                    } else {
-                        contactModal.style.display = 'none';
-                    }
+                if (!photoModal.style.display || photoModal.style.display == 'none') {
+                    displayModal('contact_modal', null);
+                } else {
+                    contactModal.style.display = 'none';
+                }
             }
             // TOGGLE PLAY/PAUSE VIDEO
-            if (modalMedia.style.display != 'none') {
+            if (modalMedia.style.display && modalMedia.style.display != 'none') {
                 if (videoModal.style.display != 'none') {
+                    // videoModal.load();
                     !videoModal.paused ? videoModal.pause() : videoModal.play();
                 }
             }

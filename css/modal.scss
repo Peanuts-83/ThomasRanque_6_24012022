@@ -25,6 +25,8 @@
   display: none;
   position: absolute;
   z-index: 2;
+  top: 70px;
+  left: calc(50% - 330px);
 
   .modal {
       display: flex;
@@ -52,11 +54,6 @@
               margin: 0 0 20px 0;
           }
       }
-
-      textarea {
-          width: 100%;
-          resize: none;
-      }
   }
 
   form {
@@ -80,6 +77,8 @@
 
       .fieldText {
           width: 100%;
+          min-width: 50px;
+          resize: none;
           padding: 10px;
           border: none;
           border-radius: 5px;
@@ -172,6 +171,21 @@
 
 // TABLET
 @media screen and (max-width: 992px) {
+    #contact_modal {
+        width: 500px;
+        left: calc(50% - 250px);
+        .modal {
+            header {
+                h2 {
+                    font-size: 48px;
+                }
+                .close {
+                    width: 80px;
+                }
+            }
+        }
+    }
+
     #photo_modal {
         left: 0;
         width: 100%;
@@ -181,6 +195,24 @@
 
 // MOBIL
 @media screen and (max-width: 768px) {
+    #contact_modal {
+        width: 100%;
+        left: 0;
+        .modal {
+            header {
+                flex-direction: column;
+                h2 {
+                    order: 1;
+                    font-size: 36px;
+                }
+                .close {
+                    width: 60px;
+                    align-self: flex-end;
+                }
+            }
+        }
+    }
+
     #photo_modal {
         .modal {
             padding: 30px 0;
