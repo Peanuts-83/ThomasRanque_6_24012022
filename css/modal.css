@@ -217,11 +217,21 @@
     width: 500px;
     left: calc(50% - 250px);
   }
+  #contact_modal .modal {
+    padding: 0;
+  }
+  #contact_modal .modal header {
+    padding: 20px;
+    width: 100%;
+  }
   #contact_modal .modal header h2 {
     font-size: 48px;
   }
   #contact_modal .modal header .close {
-    width: 80px;
+    width: 60px;
+  }
+  #contact_modal .modal #contact_form {
+    width: 90%;
   }
   #photo_modal {
     left: 0;
@@ -236,6 +246,9 @@
     width: 100%;
     left: 0;
   }
+  #contact_modal .modal {
+    width: 100%;
+  }
   #contact_modal .modal header {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -249,9 +262,11 @@
     font-size: 36px;
   }
   #contact_modal .modal header .close {
-    width: 60px;
     -ms-flex-item-align: end;
         align-self: flex-end;
+  }
+  #contact_modal .modal label {
+    font-size: 24px;
   }
   #photo_modal .modal {
     padding: 30px 0;

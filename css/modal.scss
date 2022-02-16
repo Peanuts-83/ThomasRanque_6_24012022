@@ -162,6 +162,8 @@
 
 }
 
+
+
 // MEDIUM Desktop
 @media screen and (max-width: 1600px) {
     #photo_modal {
@@ -174,14 +176,23 @@
     #contact_modal {
         width: 500px;
         left: calc(50% - 250px);
+
         .modal {
+            padding: 0;
+
             header {
+                padding: 20px;
+                width: 100%;
                 h2 {
                     font-size: 48px;
                 }
                 .close {
-                    width: 80px;
+                    width: 60px;
                 }
+            }
+
+            #contact_form {
+                width: 90%;
             }
         }
     }
@@ -198,7 +209,10 @@
     #contact_modal {
         width: 100%;
         left: 0;
+
         .modal {
+            width: 100%;
+            
             header {
                 flex-direction: column;
                 h2 {
@@ -206,9 +220,12 @@
                     font-size: 36px;
                 }
                 .close {
-                    width: 60px;
                     align-self: flex-end;
                 }
+            }
+
+            label {
+                font-size: 24px;
             }
         }
     }
