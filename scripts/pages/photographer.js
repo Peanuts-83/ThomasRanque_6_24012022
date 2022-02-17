@@ -238,6 +238,9 @@ document.onkeyup = (e) => {
             document.querySelectorAll('.modal').forEach(modal => {
                 closeModal(modal.parentElement);
             });
+            console.log(document.querySelector('.logo').parentElement)
+            const logo = document.querySelector('.logo').parentElement;
+            logo.focus()
             // CLOSE sort-by
             if (Array.from(options).every(li => li.classList.contains('active'))) {
                 toggleSortMenu();
